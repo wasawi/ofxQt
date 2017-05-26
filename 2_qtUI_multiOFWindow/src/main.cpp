@@ -8,7 +8,7 @@ int main( )
 {
 	ofGLFWWindowSettings settings;
 
-	settings.title = "Render 1";
+	settings.title = "GLFW Main window";
 	settings.width = 400;
 	settings.height = 200;
 	settings.setPosition(ofVec2f(500, 100));
@@ -17,7 +17,7 @@ int main( )
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 	shared_ptr<ofApp> app(new ofApp);
 
-	settings.title = "Render 2";
+	settings.title = "GLFW GUI window";
 	settings.width = 300;
 	settings.height = 300;
 	settings.setPosition(ofVec2f(1100, 100));

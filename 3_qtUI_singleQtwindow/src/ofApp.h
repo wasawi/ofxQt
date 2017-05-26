@@ -5,10 +5,6 @@
 
 #include "QtGuiClass.h"
 
-//namespace Ui {
-//    class QtGuiClass;
-//}
-
 class ofApp : public ofBaseApp{
     public:
         void setup();
