@@ -65,7 +65,7 @@ protected:
 	void 	mouseMoveEvent(QMouseEvent *event);
 	void 	mousePressEvent(QMouseEvent *event);
 	void 	mouseReleaseEvent(QMouseEvent *event);
-	//void 	moveEvent(QMoveEvent *event);
+	void 	moveEvent(QMoveEvent *event);
 	//bool 	nativeEvent(const QByteArray &eventType, void *message, long *result);
 	//void 	paintEvent(QPaintEvent *event);
 //	void 	resizeEvent(QResizeEvent *event); // implementing this event will cause resizeGL to stop working..

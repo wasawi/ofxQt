@@ -160,16 +160,18 @@ void QtGLWidget::keyReleaseEvent(QKeyEvent * event)
 
 void QtGLWidget::mouseMoveEvent(QMouseEvent *event)
 {
-//	cout << "mouseMoveEvent" << endl;
+//	cout << "mouse event ";
 	double x = event->x();
 	double y = event->y();
 
 	rotateMouseXY(instance->orientation, instance->getWidth(), instance->getHeight(), x, y);
 
 	if (!instance->buttonPressed) {
+//		cout << "Move" << endl;
 		instance->events().notifyMouseMoved(x*instance->pixelScreenCoordScale, y*instance->pixelScreenCoordScale);
 	}
 	else {
+//		cout << "Drag" << endl;
 		instance->events().notifyMouseDragged(x*instance->pixelScreenCoordScale, y*instance->pixelScreenCoordScale, instance->buttonInUse);
 	}
 }
@@ -177,18 +179,6 @@ void QtGLWidget::mouseMoveEvent(QMouseEvent *event)
 void QtGLWidget::mousePressEvent(QMouseEvent *event)
 {
 	cout << "mousePressEvent" << endl;
-	/*
-	lastPos = event->pos();
-	mousePressed = event->button();
-	static ofMouseEventArgs mouseEventArgs;
-	mouseEventArgs.x = event->pos().x();
-	mouseEventArgs.y = event->pos().y();
-	mouseEventArgs.button = mousePressed;
-
-	//ofAppPtr->mousePressed(event->pos().x(), event->pos().y(), event->button());
-	ofNotifyEvent(ofEvents().mousePressed, mouseEventArgs);
-	*/
-
 	Qt::MouseButton qtButton = event->button();
 	int ofButton;
 
@@ -211,7 +201,7 @@ void QtGLWidget::mousePressEvent(QMouseEvent *event)
 
 void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
 {
-//	cout << "mouseReleaseEvent" << endl;
+	cout << "mouseReleaseEvent" << endl;
 	Qt::MouseButton qtButton = event->button();
 	int ofButton;
 
@@ -232,9 +222,12 @@ void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
 	instance->buttonInUse = ofButton;
 }
 
-//void QtGLWidget::moveEvent(QMoveEvent * event)
-//{
-//}
+void QtGLWidget::moveEvent(QMoveEvent * event)
+{
+	cout << "moveEvent" << endl;
+	double x = event->pos().x();
+	double y = event->pos().y();
+}
 //bool QtGLWidget::nativeEvent(const QByteArray & eventType, void * message, long * result)
 //{
 //	return false;
