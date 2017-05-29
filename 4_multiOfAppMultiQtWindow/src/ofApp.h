@@ -25,4 +25,5 @@ public:
 
 	QtGuiClass *ui;
 	shared_ptr<GuiApp> gui;
+	ofPoint cursor;
 };

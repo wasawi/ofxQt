@@ -2,10 +2,16 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+	ofLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+	ofEnableAlphaBlending();
+
 	// init ui
 	ui->show();
 	ui->setRadius(100);
-	ui->setColor(ofColor::white);
+	ui->setColor(ofColor::cyan);
+
+	cursor = ofPoint(ofGetWindowWidth() / 2 - ui->getRadius() / 2, ofGetWindowHeight() / 2 - ui->getRadius() / 2);
 }
 
 //--------------------------------------------------------------
@@ -15,13 +21,11 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofPushStyle();
-	ofSetColor(255);
+	ofSetColor(ofColor::gray);
+	ofRect(ofGetWindowWidth() / 2 - ui->getRadius() / 2, ofGetWindowHeight() / 2 - ui->getRadius() / 2, ui->getRadius(), ui->getRadius());
+	ofSetColor(ui->getColor(), 50);
+	ofCircle(cursor.x, cursor.y, ui->getRadius() / 2);
 	ofDrawBitmapString("value from slider: " + ofToString(ui->getRadius()), 20, 20);
-	ofPopStyle();
-
-	ofSetColor(ui->getColor());
-	ofEllipse(ofGetWidth() / 2, ofGetHeight() / 2, ui->getRadius(), ui->getRadius());
 }
 
 //--------------------------------------------------------------
@@ -41,7 +45,7 @@ void ofApp::mouseMoved(int x, int y) {
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-
+	cursor = ofPoint(x, y);
 }
 
 //--------------------------------------------------------------

@@ -78,7 +78,7 @@ void ofAppQtWindow::setup(const ofGLWindowSettings & settings) {
 
 //------------------------------------------------------------
 void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
-	cout << "setup ofAppQtWindow" << endl;
+//	cout << "setup ofAppQtWindow" << endl;
 
 	if (qtWidgetPtr) {
 		ofLogError() << "window already setup, probably you are mixing old and new style setup";
@@ -241,7 +241,7 @@ void ofAppQtWindow::draw() {
 					qtAppPtr->processEvents();
 				}
 				else {
-					qtWidgetPtr->update();
+//					qtWidgetPtr->update();
 				}
 			}
 			else {
@@ -255,11 +255,14 @@ void ofAppQtWindow::draw() {
 			// process Qt events
 			//////////////////////////////////////
 			if (hasQtApp) {
+				// needed if we want events from Of to Qt
+				// curently crashes on closing window
+				// it slows down framerate quite alot!
 				qtAppPtr->processEvents();
 			}
 			else {
-				qtAppPtr->processEvents();// needed if we want events from QtWindow
-				qtWidgetPtr->update();
+				// update widget already done at update
+//				qtWidgetPtr->update();
 			}
 		}
 		else {

@@ -22,7 +22,7 @@ QtGLWidget::~QtGLWidget(){
 
 void QtGLWidget::initializeGL()
 {
-	cout << "initializeGL" << endl;
+//	cout << "initializeGL" << endl;
 }
 
 void QtGLWidget::paintGL()
@@ -37,7 +37,7 @@ void QtGLWidget::paintGL()
 
 void QtGLWidget::resizeGL(int width, int height)
 {
-	cout << "resizeGL" << endl;
+//	cout << "resizeGL" << endl;
 	instance->currentW = width;
 	instance->currentH = height;
 	instance->events().notifyWindowResized(width, height);
@@ -178,7 +178,7 @@ void QtGLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void QtGLWidget::mousePressEvent(QMouseEvent *event)
 {
-	cout << "mousePressEvent" << endl;
+//	cout << "mousePressEvent" << endl;
 	Qt::MouseButton qtButton = event->button();
 	int ofButton;
 
@@ -201,7 +201,7 @@ void QtGLWidget::mousePressEvent(QMouseEvent *event)
 
 void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
 {
-	cout << "mouseReleaseEvent" << endl;
+//	cout << "mouseReleaseEvent" << endl;
 	Qt::MouseButton qtButton = event->button();
 	int ofButton;
 
@@ -224,7 +224,7 @@ void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void QtGLWidget::moveEvent(QMoveEvent * event)
 {
-	cout << "moveEvent" << endl;
+//	cout << "moveEvent" << endl;
 	double x = event->pos().x();
 	double y = event->pos().y();
 }

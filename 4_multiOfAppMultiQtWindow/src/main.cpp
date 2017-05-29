@@ -20,6 +20,7 @@ int main( )
 	settings.title = "Qt window";
 
 	shared_ptr<ofAppQtWindow> mainWindow = make_shared<ofAppQtWindow>();
+	mainWindow->setQtAppPointer(qtAppPtr);
 	mainWindow->setIsWindow(true);
 	mainWindow->setup(settings);
 
@@ -31,6 +32,7 @@ int main( )
 	settings.title = "Qt GUI window";
 
 	shared_ptr<ofAppQtWindow> guiWindow = make_shared<ofAppQtWindow>();
+	guiWindow->setQtAppPointer(qtAppPtr);
 	guiWindow->setIsWindow(true);
 	guiWindow->setup(settings2);
 

@@ -17,6 +17,7 @@ int main( )
 //	settings.decorated = false;
 	shared_ptr<ofAppQtWindow> mainWindow = make_shared<ofAppQtWindow>();
 	mainWindow->createQtApp();
+	mainWindow->setIsWindow(true);
 	mainWindow->setup(settings);
 
 	ofGLFWWindowSettings settings2;
