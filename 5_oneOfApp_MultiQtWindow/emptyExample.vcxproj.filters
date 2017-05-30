@@ -49,9 +49,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QtWindow.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\ofAppQtWindow.cpp">
       <Filter>addons\ofxQt</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
       <Filter>src</Filter>
     </CustomBuild>
     <CustomBuild Include="src\mainwindow.ui">
-      <Filter>src</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\QtWindow.h">
       <Filter>src</Filter>
     </CustomBuild>
     <CustomBuild Include="..\src\QtGLWidget.h">

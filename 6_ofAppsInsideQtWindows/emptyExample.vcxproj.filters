@@ -49,9 +49,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QtWindow.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\device.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -117,9 +114,6 @@
       <Filter>src</Filter>
     </CustomBuild>
     <CustomBuild Include="src\mainwindow.ui">
-      <Filter>src</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\QtWindow.h">
       <Filter>src</Filter>
     </CustomBuild>
     <CustomBuild Include="src\device.h">
