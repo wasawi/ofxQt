@@ -2,7 +2,7 @@
 
 ofApp::~ofApp()
 {
-	OfGUI.clear();
+//	OfGUI.clear();
 	framerate.removeListener(this, &ofApp::setFramerate);
 	verticalSync.removeListener(this, &ofApp::setVerticalSync);
 }
@@ -25,7 +25,7 @@ void ofApp::setup(){
 	parameters.add(color.set("color", ofColor::yellow, 0, 255));
 	parameters.add(framerate.set("framerate", 60, 1, 100));
 	parameters.add(verticalSync.set("verticalSync", true));
-	OfGUI.setup(parameters);
+//	OfGUI.setup(parameters);
 
 	framerate.addListener(this, &ofApp::setFramerate);
 	verticalSync.addListener(this, &ofApp::setVerticalSync);
@@ -85,7 +85,7 @@ void ofApp::draw(){
 	ofCircle(cursor.x, cursor.y, radius / 2);
 
 	ofSetColor(ofColor::white);
-	OfGUI.draw();
+//	OfGUI.draw();
 }
 
 //--------------------------------------------------------------

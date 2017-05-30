@@ -41,7 +41,7 @@ public:
 		ofParameter<ofColor> color;
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
-		ofxPanel OfGUI;
+//		ofxPanel OfGUI;
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);
