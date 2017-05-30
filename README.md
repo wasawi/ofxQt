@@ -67,3 +67,9 @@ Known issues
 Version history
 ------------
 
+
+Screenshots
+------------
+![Image of Of_inside_Qt](https://raw.githubusercontent.com/jordiexvision/ofxQt/blob/master/screenshots/Of_inside_Qt.png)
+
+![Image of ofAppQtWindow](https://raw.githubusercontent.com/jordiexvision/ofxQt/blob/master/screenshots/ofAppQtWindow.png)
