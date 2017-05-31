@@ -2,11 +2,12 @@
 
 #include "ofConstants.h"
 #include "ofAppBaseWindow.h"
+#include "ofGLProgrammableRenderer.h"
+#include "ofGLRenderer.h"
 
 #include <QApplication>
 #include "QtGLWidget.h"
 
-class ofBaseApp;
 class QtGLWidget;
 
 #ifdef TARGET_OPENGLES
@@ -94,8 +95,8 @@ public:
 
 //	QtWindow* getQtWindow();
 //	void * getWindowContext() { return getQtWindow(); }
-	ofGLWindowSettings getSettings() { return settings; }
-	QOpenGLWidget* getQOpenGLWidget();
+	ofGLWindowSettings getSettings() { return settings; };
+	QWidget* getQOpenGLWidget();
 
 	glm::vec2 	getWindowPosition();
 	glm::vec2	getWindowSize();

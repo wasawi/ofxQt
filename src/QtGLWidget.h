@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofBaseApp.h"
-#include "ofApp.h"
 #include "ofAppQtWindow.h"
 //
 #include <QOpenGLFunctions>
@@ -32,7 +31,7 @@ public:
 
 protected:
 	void initializeGL();					// required from Qt
-    void paintGL() override;							// required from Qt
+    void paintGL() override;				// required from Qt
     void resizeGL(int width, int height);	// required from Qt
 
 	// TODO:

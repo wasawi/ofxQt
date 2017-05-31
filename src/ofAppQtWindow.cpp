@@ -306,7 +306,7 @@ shared_ptr<ofBaseRenderer> & ofAppQtWindow::renderer() {
 	return currentRenderer;
 }
 
-QOpenGLWidget * ofAppQtWindow::getQOpenGLWidget()
+QWidget * ofAppQtWindow::getQOpenGLWidget()
 {
 	return qtWidgetPtr;
 }
