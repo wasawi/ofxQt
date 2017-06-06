@@ -350,7 +350,7 @@ glm::vec2 ofAppQtWindow::getWindowPosition() {
 	int x = qtWidgetPtr->pos().x();
 	int y = qtWidgetPtr->pos().y();
 
-	cout << "getWindowPosition "<< x <<" "<< y << endl;
+//	cout << "getWindowPosition "<< x <<" "<< y << endl;
 	return glm::vec2{ x, y };
 }
 
@@ -359,13 +359,13 @@ glm::vec2 ofAppQtWindow::getScreenSize() {
 	int width = qtWidgetPtr->size().width();
 	int height = qtWidgetPtr->size().height();
 
-	cout << "getScreenSize " << width << " " << height << endl;
+//	cout << "getScreenSize " << width << " " << height << endl;
 	return glm::vec2{ width, height };
 }
 
 //------------------------------------------------------------
 void ofAppQtWindow::setWindowPosition(int x, int y) {
-	cout << "setWindowPosition " << x << " " << y << endl;
+//	cout << "setWindowPosition " << x << " " << y << endl;
 	qtWidgetPtr->move(QPoint{ x, y });
 }
 
@@ -386,7 +386,7 @@ void ofAppQtWindow::setWindowShape(int w, int h) {
 		setWindowPosition(pos.x, pos.y);
 	}
 #else
-	cout << "setWindowShape " << currentW << " " << currentH << endl;
+//	cout << "setWindowShape " << currentW << " " << currentH << endl;
 	qtWidgetPtr->resize(currentW, currentH);
 #endif
 }
