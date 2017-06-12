@@ -24,7 +24,6 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	layout = ui.horizontalLayout;
 	layout->addWidget(windowPtr->getQOpenGLWidget());
 	ui.widget_2->setLayout(layout);
-	windowPtr->getQOpenGLWidget()->resized();
 
 	// initialize OF
 	ofRunApp(windowPtr, ofAppPtr);

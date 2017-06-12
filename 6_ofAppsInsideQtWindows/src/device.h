@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 
+#include "ofApp.h"
 #include "QtGLWidget.h"
 #include "ui_device.h"
 
