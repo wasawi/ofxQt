@@ -42,8 +42,19 @@ device::~device()
 
 void device::newframe()
 {
+//	loop->loopOnce();
+
+	ofSetMainLoop(loop);
 	ofGetMainLoop()->setCurrentWindow(windowPtr);
-	loop->loopOnce();
+
+	windowPtr->makeCurrent();
+	if (windowPtr->getWindowShouldClose()) {
+		windowPtr->close();
+	}
+	else {
+		windowPtr->update();
+		windowPtr->draw();
+	}
 }
 
 void device::on_horizontalSlider_sliderMoved(int value) {
