@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxImGui.h"
 
 // include Qt always at the end or face glew error
 #include <QSettings>
@@ -12,6 +13,7 @@ namespace Ui {
 
 class ofApp : public ofBaseApp{
 public:
+	ofApp();
 	~ofApp();
 
 	shared_ptr<ofAppBaseWindow> window;
@@ -41,6 +43,10 @@ public:
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
 //		ofxPanel OfGUI;
+
+
+		ofxImGui::Gui imgui;
+
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);
