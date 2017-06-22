@@ -34,7 +34,11 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
-	close();
+	//	close();
+	// close is called from ofMainLoop
+	// and setWindowShouldClose(true);
+	// has to be called when deleting a widget.
+	// not sure how could we do that automatically
 }
 
 void ofAppQtWindow::createQtApp()
@@ -393,8 +397,8 @@ void ofAppQtWindow::setWindowShape(int w, int h) {
 
 void ofAppQtWindow::close()
 {
-//	qtWidgetPtr->makeCurrent();
-//	events().disable();
+	ofAppBaseGLWindow::close();
+	qtWidgetPtr == nullptr;
 	bWindowNeedsShowing = true;
 }
 

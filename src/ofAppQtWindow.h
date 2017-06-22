@@ -144,7 +144,6 @@ public:
 //	void		setFrameRate(float targetRate);
 
 
-public:
 	ofCoreEvents coreEvents;
 	shared_ptr<ofBaseRenderer> currentRenderer;
 	ofQtGLWindowSettings settings;
@@ -153,19 +152,18 @@ public:
 	ofRectangle		windowRect;
 	ofOrientation	orientation;
 
-	bool			bEnableSetupScreen;
 	int				windowW, windowH;		// physical pixels width
 	int				currentW, currentH;		// scaled pixels width
-
 	int				buttonInUse;
+	int				pixelScreenCoordScale;
 	bool			buttonPressed;
+	bool			bEnableSetupScreen;
 
+private:
 	int 			nFramesSinceWindowResized;
 	bool			bWindowNeedsShowing;
 	bool			iconSet;
-	int				pixelScreenCoordScale;
 	bool			bShouldClose;
-
 	bool			hasQtApp;
 	bool			bIsWindow;
 
