@@ -33,7 +33,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 device::~device()
 {
 	// tell the ofMainLoop that this window has to close.
-	windowPtr->bShouldClose = true;
+	windowPtr->setWindowShouldClose(true);
 }
 
 void device::on_Size_slider_sliderMoved(int value) {
