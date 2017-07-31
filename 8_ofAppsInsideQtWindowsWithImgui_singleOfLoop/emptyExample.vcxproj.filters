@@ -94,6 +94,9 @@
     <ClCompile Include="..\..\ofxImGui\src\Helpers.cpp">
       <Filter>addons\ofxImGui\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\imguiTheme.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -246,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="..\..\ofxImGui\src\ThemeTest.h">
       <Filter>addons\ofxImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imguiTheme.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

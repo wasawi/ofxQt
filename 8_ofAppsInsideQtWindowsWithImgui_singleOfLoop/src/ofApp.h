@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxImGui.h"
+#include "imguiTheme.h"
 
 // include Qt always at the end or face glew error
 #include <QSettings>

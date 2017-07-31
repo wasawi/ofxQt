@@ -9,13 +9,14 @@ ofApp::ofApp(){
 ofApp::~ofApp()
 {
 //	OfGUI.clear();
+	imgui.close(); // important
 	framerate.removeListener(this, &ofApp::setFramerate);
 	verticalSync.removeListener(this, &ofApp::setVerticalSync);
 }
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	imgui.setup();
+	imgui.setup(new ImguiTheme());
 
 	ofLogLevel(OF_LOG_VERBOSE);
 	ofLogToConsole();
