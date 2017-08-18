@@ -1,8 +1,3 @@
-
-#include "ofMain.h"
-#include "ofApp.h"
-
-#include "ofAppQtWindow.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])

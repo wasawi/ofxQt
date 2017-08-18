@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
+//#include "ofxGui.h"
 #include "ofxImGui.h"
 #include "imguiTheme.h"
 
@@ -45,9 +45,7 @@ public:
 		ofParameter<bool> verticalSync;
 //		ofxPanel OfGUI;
 
-
 		ofxImGui::Gui imgui;
-
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);

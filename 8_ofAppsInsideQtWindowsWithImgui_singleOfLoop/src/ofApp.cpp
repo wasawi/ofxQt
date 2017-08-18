@@ -1,9 +1,6 @@
 #include "ofApp.h"
 
 ofApp::ofApp(){
-
-
-
 }
 
 ofApp::~ofApp()
@@ -64,10 +61,10 @@ void ofApp::draw(){
 
 	ofEnableAntiAliasing();
 
-	cout << "window w " << window->getWidth() << endl;
-	cout << "window h " << window->getHeight() << endl;
-	cout << "of w " << ofGetWindowWidth() << endl;
-	cout << "of h " << ofGetWindowHeight() << endl;
+	//cout << "window w " << window->getWidth() << endl;
+	//cout << "window h " << window->getHeight() << endl;
+	//cout << "of w " << ofGetWindowWidth() << endl;
+	//cout << "of h " << ofGetWindowHeight() << endl;
 
 	ofSetColor(ofColor::cyan, 100);
 	int margin = 10;

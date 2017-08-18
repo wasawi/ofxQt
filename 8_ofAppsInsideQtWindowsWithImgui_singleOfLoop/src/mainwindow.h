@@ -1,9 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "ofMain.h"
-#include "ui_mainwindow.h"
+// of
+#include "ofMainLoop.h"
+
+// ofApp
 #include "device.h"
+
+// Qt ui
+#include "ui_mainwindow.h"
 
 // include Qt always at the end or face glew error
 #include <vector>

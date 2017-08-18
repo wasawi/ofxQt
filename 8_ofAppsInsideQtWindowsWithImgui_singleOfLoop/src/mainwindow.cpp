@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "device.h"	// do NOT move!
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
