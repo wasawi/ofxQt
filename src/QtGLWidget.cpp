@@ -6,41 +6,43 @@
 #include <QtGlobal>
 #include "QtGLWidget.h"
 
-QtGLWidget::QtGLWidget(ofAppQtWindow* _windowPtr, QWidget *parent)
-	: QOpenGLWidget(parent) {
+QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
+	: QOpenGLWidget(parent), 
+	instance(_windowPtr)
+{
 	qt_set_sequence_auto_mnemonic(true);
 	mousePressed = 0;
 	setMouseTracking(true);
 	setUpdateBehavior(QOpenGLWidget::PartialUpdate); // very important
-//	ofAppPtr = _ofAppPtr;
+	setAttribute(Qt::WA_DeleteOnClose, true);
 	parentWidget = parent;
-	instance = _windowPtr;
 }
 
 QtGLWidget::~QtGLWidget(){
+	ofLogVerbose() << "QtGLWidget Dtor";
+//	instance.close();
 }
 
 void QtGLWidget::initializeGL()
 {
-//	cout << "initializeGL" << endl;
+	ofLogVerbose() << "initializeGL";
 }
 
 void QtGLWidget::paintGL()
 {
-//	cout << "paintGL" << endl;
-//	ofClear(ofColor::black);
-//	ofBackground(ofColor::darkCyan);
-	//for (int i = 0; i < 100; i++) {
-	//	ofRect(ofRandom(500), ofRandom(500), ofRandom(50), ofRandom(50));
-	//}
+	ofLogVerbose() << "begin OF render";
+
+	instance.paint();
+
+	ofLogVerbose() << "end OF render";
 }
 
 void QtGLWidget::resizeGL(int width, int height)
 {
-//	cout << "resizeGL" << endl;
-	instance->currentW = width;
-	instance->currentH = height;
-	instance->events().notifyWindowResized(width, height);
+	ofLogVerbose() << "resizeGL";
+	instance.currentW = width;
+	instance.currentH = height;
+	instance.events().notifyWindowResized(width, height);
 }
 //------------------------------------------------------------
 void QtGLWidget::setWindowTitle(string title) {
@@ -164,15 +166,15 @@ void QtGLWidget::mouseMoveEvent(QMouseEvent *event)
 	double x = event->x();
 	double y = event->y();
 
-	rotateMouseXY(instance->orientation, instance->getWidth(), instance->getHeight(), x, y);
+	rotateMouseXY(instance.orientation, instance.getWidth(), instance.getHeight(), x, y);
 
-	if (!instance->buttonPressed) {
+	if (!instance.buttonPressed) {
 //		cout << "Move" << endl;
-		instance->events().notifyMouseMoved(x*instance->pixelScreenCoordScale, y*instance->pixelScreenCoordScale);
+		instance.events().notifyMouseMoved(x*instance.pixelScreenCoordScale, y*instance.pixelScreenCoordScale);
 	}
 	else {
 //		cout << "Drag" << endl;
-		instance->events().notifyMouseDragged(x*instance->pixelScreenCoordScale, y*instance->pixelScreenCoordScale, instance->buttonInUse);
+		instance.events().notifyMouseDragged(x*instance.pixelScreenCoordScale, y*instance.pixelScreenCoordScale, instance.buttonInUse);
 	}
 }
 
@@ -194,9 +196,9 @@ void QtGLWidget::mousePressEvent(QMouseEvent *event)
 		break;
 	}
 
-	instance->events().notifyMousePressed(instance->events().getMouseX(), instance->events().getMouseY(), ofButton);
-	instance->buttonPressed = true;
-	instance->buttonInUse = ofButton;
+	instance.events().notifyMousePressed(instance.events().getMouseX(), instance.events().getMouseY(), ofButton);
+	instance.buttonPressed = true;
+	instance.buttonInUse = ofButton;
 }
 
 void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
@@ -217,9 +219,9 @@ void QtGLWidget::mouseReleaseEvent(QMouseEvent *event)
 		break;
 	}
 
-	instance->events().notifyMouseReleased(instance->events().getMouseX(), instance->events().getMouseY(), ofButton);
-	instance->buttonPressed = false;
-	instance->buttonInUse = ofButton;
+	instance.events().notifyMouseReleased(instance.events().getMouseX(), instance.events().getMouseY(), ofButton);
+	instance.buttonPressed = false;
+	instance.buttonInUse = ofButton;
 }
 
 void QtGLWidget::moveEvent(QMoveEvent * event)
@@ -245,21 +247,21 @@ void QtGLWidget::moveEvent(QMoveEvent * event)
 //	cout << "w "<< w << endl;
 //	cout << "h "<< h << endl;
 //
-//	if (instance->windowMode == OF_WINDOW) {
-//		instance->windowW = w * instance->pixelScreenCoordScale;
-//		instance->windowH = h * instance->pixelScreenCoordScale;
+//	if (instance.windowMode == OF_WINDOW) {
+//		instance.windowW = w * instance.pixelScreenCoordScale;
+//		instance.windowH = h * instance.pixelScreenCoordScale;
 //	}
-//	instance->currentW = w;
-//	instance->currentH = h;
+//	instance.currentW = w;
+//	instance.currentH = h;
 //
-//	int finalW = w*instance->pixelScreenCoordScale;
-//	int finalH = h*instance->pixelScreenCoordScale;
+//	int finalW = w*instance.pixelScreenCoordScale;
+//	int finalH = h*instance.pixelScreenCoordScale;
 //
 //	cout << "finalW " << finalW << endl;
 //	cout << "finalH " << finalH << endl;
 //
-//	instance->events().notifyWindowResized(w*instance->pixelScreenCoordScale, h*instance->pixelScreenCoordScale);
-//	instance->nFramesSinceWindowResized = 0;
+//	instance.events().notifyWindowResized(w*instance.pixelScreenCoordScale, h*instance.pixelScreenCoordScale);
+//	instance.nFramesSinceWindowResized = 0;
 ////	static ofResizeEventArgs resizeEventArgs(w, h);
 ////	ofNotifyEvent(ofEvents().windowResized, resizeEventArgs);
 //}

@@ -15,11 +15,11 @@ class QtGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 
 public:
 
-	QtGLWidget(ofAppQtWindow* _windowPtr, QWidget *parent = 0);// shared_ptr<::ofApp> app, ofAppQtWindow* _windowPtr, QWidget *parent = 0
+	QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent = 0);
+
     ~QtGLWidget();
 	
-//	shared_ptr<ofApp> ofAppPtr;
-	ofAppQtWindow* instance;
+	ofAppQtWindow& instance;
 
 //	void swapBuffers();
 
