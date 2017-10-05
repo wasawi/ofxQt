@@ -45,7 +45,7 @@ public:
 	shared_ptr<ofAppBaseWindow> shareContextWith;
 };
 
-class ofAppQtWindow : public ofAppBaseGLWindow{//, public QWidget {
+class ofAppQtWindow : public ofAppBaseGLWindow{
 
 public:
 
@@ -76,6 +76,7 @@ public:
 	void setup(const ofQtGLWindowSettings & settings);
 	void update();
 	void draw();
+	void paint();
 
 //	void paintEvent(QPaintEvent * event) override;
 
