@@ -36,6 +36,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
 	ofLogVerbose() << "ofAppQtWindow Dtor";
+	close();
 }
 
 void ofAppQtWindow::close()
