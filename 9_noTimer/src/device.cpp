@@ -16,22 +16,44 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	// ofLoop is not used, Qt will call events
 	ofAppPtr = make_shared<ofApp>();
 	windowPtr = make_shared<ofAppQtWindow>(this->parentWidget());
-	ofAppPtr->window = windowPtr;
 	ofSetupOpenGL(windowPtr, 400, 400, OF_WINDOW);
-	ofRunApp(windowPtr, ofAppPtr);
-
+	
 	// add widget to layout
 	layout = ui.horizontalLayout;
 	layout->addWidget(windowPtr->getQOpenGLWidget());
 	ui.widget_2->setLayout(layout);
+
+	// initialize OF must be here!
+	ofRunApp(windowPtr, ofAppPtr);
 }
 
 device::~device()
 {
 	// tell the ofMainLoop that this window has to close.
+//	ofAppPtr = nullptr; // this removes warnings on console
 	ofGetMainLoop()->removeWindow(windowPtr);
 }
 
 void device::on_Size_slider_sliderMoved(int value) {
 	ofAppPtr->radius.set(value);
+}
+
+void device::changeEvent(QEvent *e)
+{
+	if (e->type() == QEvent::WindowStateChange) {
+
+		if (isMinimized()) {
+			ofLogVerbose() << "MINIMIZED";
+		}
+		else if (isMaximized()){
+			ofLogVerbose() << "MAXIMIZED ETC";
+			windowPtr->paint();
+		}
+		else {
+			ofLogVerbose() << "NORMA ETC";
+			windowPtr->paint();
+		}
+	}
+
+	e->accept();
 }
