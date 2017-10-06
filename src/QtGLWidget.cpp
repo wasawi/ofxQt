@@ -20,7 +20,6 @@ QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
 
 QtGLWidget::~QtGLWidget(){
 	ofLogVerbose() << "QtGLWidget Dtor";
-//	instance.close();
 }
 
 void QtGLWidget::initializeGL()
@@ -39,7 +38,7 @@ void QtGLWidget::paintGL()
 
 void QtGLWidget::resizeGL(int width, int height)
 {
-	ofLogVerbose() << "resizeGL";
+	ofLogVerbose() << "resizeGL " << width << " " << height;
 	instance.currentW = width;
 	instance.currentH = height;
 	instance.events().notifyWindowResized(width, height);
