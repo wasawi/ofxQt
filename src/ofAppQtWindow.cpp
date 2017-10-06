@@ -35,7 +35,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
-	ofLogVerbose() << "ofAppQtWindow Dtor";
+//	ofLogVerbose() << "ofAppQtWindow Dtor";
 }
 
 void ofAppQtWindow::close()
@@ -72,7 +72,7 @@ void ofAppQtWindow::setIsWindow(bool value)
 
 void ofAppQtWindow::paint()
 {
-	ofLogVerbose() << "ofAppQtWindow paint";
+//	ofLogVerbose() << "ofAppQtWindow paint";
 	ofGetMainLoop()->setCurrentWindow(this);
 	if (getWindowShouldClose()) {
 		close();
@@ -218,7 +218,7 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
-	ofLogVerbose() << "update ofAppQtWindow";
+//	ofLogVerbose() << "update ofAppQtWindow";
 	qtWidgetPtr->makeCurrent();
 	events().notifyUpdate();
 
@@ -241,7 +241,7 @@ void ofAppQtWindow::update() {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::draw() {
-	ofLogVerbose() << "draw ofAppQtWindow";
+//	ofLogVerbose() << "draw ofAppQtWindow";
 	currentRenderer->startRender();
 
 	if (bEnableSetupScreen) currentRenderer->setupScreen();
