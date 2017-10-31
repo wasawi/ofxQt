@@ -1,8 +1,9 @@
 #include "ofAppQtWindow.h"
 
 //----------------------------------------------------------
-//ofAppQtWindow::ofAppQtWindow(QApplication * qtApp) {
 ofAppQtWindow::ofAppQtWindow(QWidget *parent){
+	ofLogVerbose() << "ofAppQtWindow Ctor";
+
 	bShouldClose = false;
 
 	bEnableSetupScreen = true;
@@ -34,11 +35,15 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
-	//	close();
-	// close is called from ofMainLoop
-	// and setWindowShouldClose(true);
-	// has to be called when deleting a widget.
-	// not sure how could we do that automatically
+//	ofLogVerbose() << "ofAppQtWindow Dtor";
+}
+
+void ofAppQtWindow::close()
+{
+	ofLogVerbose() << "close";
+	qtWidgetPtr->makeCurrent();
+	events().disable();
+	bWindowNeedsShowing = true;
 }
 
 void ofAppQtWindow::createQtApp()
@@ -65,6 +70,19 @@ void ofAppQtWindow::setIsWindow(bool value)
 	qtWidgetPtr->setAttribute(Qt::WA_AlwaysStackOnTop, value); // very important. fixes transparency bug
 }
 
+void ofAppQtWindow::paint()
+{
+//	ofLogVerbose() << "ofAppQtWindow paint";
+	ofGetMainLoop()->setCurrentWindow(this);
+	if (getWindowShouldClose()) {
+		close();
+	}
+	else {
+		update();
+		draw();
+	}
+}
+
 //------------------------------------------------------------
 #ifdef TARGET_OPENGLES
 void ofAppGLFWWindow::setup(const ofGLESWindowSettings & settings) {
@@ -82,7 +100,7 @@ void ofAppQtWindow::setup(const ofGLWindowSettings & settings) {
 
 //------------------------------------------------------------
 void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
-//	cout << "setup ofAppQtWindow" << endl;
+	ofLogVerbose() << "setup ofAppQtWindow";
 
 	if (qtWidgetPtr) {
 		ofLogError() << "window already setup, probably you are mixing old and new style setup";
@@ -125,7 +143,7 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	//////////////////////////////////////
 	// create Qt window
 	//////////////////////////////////////
-	qtWidgetPtr = new QtGLWidget(this, parentWidget);
+	qtWidgetPtr = new QtGLWidget(*this, parentWidget);
 	setIsWindow(bIsWindow);
 
 	qtWidgetPtr->resize(settings.width, settings.height);
@@ -200,7 +218,8 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
-//	cout << "update ofAppQtWindow" << endl;
+//	ofLogVerbose() << "update ofAppQtWindow";
+	qtWidgetPtr->makeCurrent();
 	events().notifyUpdate();
 
 	//////////////////////////////////////
@@ -208,11 +227,11 @@ void ofAppQtWindow::update() {
 	//////////////////////////////////////
 	qtWidgetPtr->makeCurrent();
 	qtWidgetPtr->update();
-
 	//////////////////////////////////////
 
 	//show the window right before the first draw call.
 	if (bWindowNeedsShowing && qtWidgetPtr) {
+
 		// GLFW update was here
 		bWindowNeedsShowing = false;
 		if (settings.windowMode == OF_FULLSCREEN) {
@@ -222,7 +241,7 @@ void ofAppQtWindow::update() {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::draw() {
-//	cout << "draw ofAppQtWindow" << endl;
+//	ofLogVerbose() << "draw ofAppQtWindow";
 	currentRenderer->startRender();
 
 	if (bEnableSetupScreen) currentRenderer->setupScreen();
@@ -238,14 +257,12 @@ void ofAppQtWindow::draw() {
 		}
 		else {
 			if ((events().getFrameNum() < 3 || nFramesSinceWindowResized < 3) && settings.doubleBuffering) {
-				//////////////////////////////////////
-				// process Qt events
-				//////////////////////////////////////
+
+				// needed if we want events from Of to Qt
+				// currently crashes on closing window
+				// it slows down framerate quite a lot!
 				if (hasQtApp) {
 					qtAppPtr->processEvents();
-				}
-				else {
-//					qtWidgetPtr->update();
 				}
 			}
 			else {
@@ -255,18 +272,12 @@ void ofAppQtWindow::draw() {
 	}
 	else {
 		if (settings.doubleBuffering) {
-			//////////////////////////////////////
-			// process Qt events
-			//////////////////////////////////////
+
+			// needed if we want events from Of to Qt
+			// currently crashes on closing window
+			// it slows down framerate quite a lot!
 			if (hasQtApp) {
-				// needed if we want events from Of to Qt
-				// curently crashes on closing window
-				// it slows down framerate quite alot!
 				qtAppPtr->processEvents();
-			}
-			else {
-				// update widget already done at update
-//				qtWidgetPtr->update();
 			}
 		}
 		else {
@@ -293,12 +304,6 @@ void ofAppQtWindow::draw() {
 
 	nFramesSinceWindowResized++;
 }
-//
-//void ofAppQtWindow::paintEvent(QPaintEvent * event)
-//{
-//	cout << "paint event" << endl;
-////	draw();
-//}
 
 //------------------------------------------------------------
 ofCoreEvents & ofAppQtWindow::events() {
@@ -393,13 +398,6 @@ void ofAppQtWindow::setWindowShape(int w, int h) {
 //	cout << "setWindowShape " << currentW << " " << currentH << endl;
 	qtWidgetPtr->resize(currentW, currentH);
 #endif
-}
-
-void ofAppQtWindow::close()
-{
-	ofAppBaseGLWindow::close();
-	qtWidgetPtr == nullptr;
-	bWindowNeedsShowing = true;
 }
 
 //------------------------------------------------------------
