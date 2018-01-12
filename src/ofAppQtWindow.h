@@ -159,6 +159,7 @@ public:
 	int				pixelScreenCoordScale;
 	bool			buttonPressed;
 	bool			bEnableSetupScreen;
+	bool			bSetupSucceded;
 
 private:
 	int 			nFramesSinceWindowResized;
@@ -167,6 +168,7 @@ private:
 	bool			bShouldClose;
 	bool			hasQtApp;
 	bool			bIsWindow;
+
 
 	// Of App Ptr
 	shared_ptr<ofBaseApp>		ofAppPtr;

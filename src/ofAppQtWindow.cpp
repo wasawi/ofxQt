@@ -22,6 +22,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 	hasQtApp = false;
 	bIsWindow = false;
+	bSetupSucceded = false;
 
 	if (parentWidget == 0) {
 		parentWidget = nullptr;
@@ -215,6 +216,8 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	// we will use 
 //	qtAppPtr->processEvents();
 	// so that we can call qt inside the OF loop
+
+	bSetupSucceded = true;
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
