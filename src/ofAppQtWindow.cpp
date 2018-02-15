@@ -147,13 +147,13 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	qtWidgetPtr = new QtGLWidget(*this, parentWidget);
 	setIsWindow(bIsWindow);
 
-	qtWidgetPtr->resize(settings.width, settings.height);
+	qtWidgetPtr->resize(settings.getWidth(), settings.getHeight());
 //	qtWidgetPtr->setFormat(format);
 	qtWidgetPtr->setWindowTitle(settings.title);
 	//	currentW = qtWidgetPtr->size().width();
 	//	currentH = qtWidgetPtr->size().height();
-	windowW = settings.width;
-	windowH = settings.height;
+	windowW = settings.getWidth();
+	windowH = settings.getHeight();
 	bWindowNeedsShowing = settings.visible;
 //	qtWidgetPtr->setAlphabits(settings.alphaBits);
 //	qtWidgetPtr->setNumSamples(settings.numSamples);
