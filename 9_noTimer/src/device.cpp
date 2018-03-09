@@ -20,7 +20,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	
 	// add widget to layout
 	layout = ui.horizontalLayout;
-	layout->addWidget(windowPtr->getQOpenGLWidget());
+	layout->addWidget(windowPtr->getQWidgetPtr());
 	ui.widget_2->setLayout(layout);
 
 	// initialize OF must be here!
@@ -31,7 +31,7 @@ device::~device()
 {
 	// tell the ofMainLoop that this window has to close.
 //	ofAppPtr = nullptr; // this removes warnings on console
-	ofGetMainLoop()->removeWindow(windowPtr);
+//	ofGetMainLoop()->removeWindow(windowPtr);
 }
 
 void device::on_Size_slider_sliderMoved(int value) {

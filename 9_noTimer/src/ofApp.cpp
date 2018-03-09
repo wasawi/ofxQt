@@ -111,6 +111,12 @@ void ofApp::draw(){
 //	OfGUI.draw();
 }
 
+void ofApp::exit()
+{
+	ofLogVerbose() << "exit";
+//	ofGetMainLoop()->removeWindow(windowPtr);
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(ofKeyEventArgs& key){
 	key_str = key.key;

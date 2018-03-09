@@ -34,32 +34,14 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="src\device.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_device.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_device.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ofAppQtWindow.cpp">
       <Filter>addons\ofxQt</Filter>
     </ClCompile>
     <ClCompile Include="..\src\QtGLWidget.cpp">
       <Filter>addons\ofxQt</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QtGLWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QtGLWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="..\..\ofxImGui\libs\imgui\src\imgui.cpp">
       <Filter>addons\ofxImGui\libs\imgui\src</Filter>
@@ -90,6 +72,30 @@
     </ClCompile>
     <ClCompile Include="src\imguiTheme.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QtGLWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QtGLWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_device.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_device.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxGui\src\ofxColorPicker.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxGui\src\ofxInputField.cpp">
+      <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +246,12 @@
     </ClInclude>
     <ClInclude Include="src\imguiTheme.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxGui\src\ofxColorPicker.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxGui\src\ofxInputField.h">
+      <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

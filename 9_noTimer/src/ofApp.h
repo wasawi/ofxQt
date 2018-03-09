@@ -20,6 +20,7 @@ public:
         void setup();
         void update();
         void draw();
+		void exit();
 
         void keyPressed(ofKeyEventArgs& key);
         void keyReleased(ofKeyEventArgs& key);
