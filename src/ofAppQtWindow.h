@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "ofConstants.h"
 #include "ofAppBaseWindow.h"
 #include "ofGLProgrammableRenderer.h"
@@ -51,7 +52,7 @@ public:
 
 //	ofAppQtWindow(QApplication * qtApp = 0);
 	ofAppQtWindow(QWidget *parent = 0);
-	~ofAppQtWindow();
+	virtual ~ofAppQtWindow();
 
 	// Can't be copied, use shared_ptr
 	ofAppQtWindow(ofAppQtWindow & w) = delete;
@@ -76,6 +77,7 @@ public:
 	void setup(const ofQtGLWindowSettings & settings);
 	void update();
 	void draw();
+	void exit();
 	void paint();
 
 //	void paintEvent(QPaintEvent * event) override;
@@ -97,7 +99,7 @@ public:
 //	QtWindow* getQtWindow();
 //	void * getWindowContext() { return getQtWindow(); }
 	ofGLWindowSettings getSettings() { return settings; };
-	QWidget* getQOpenGLWidget();
+	QWidget* getQWidgetPtr();
 
 	glm::vec2 	getWindowPosition();
 	glm::vec2	getWindowSize();

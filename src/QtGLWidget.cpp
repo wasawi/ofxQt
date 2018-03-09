@@ -10,6 +10,7 @@ QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
 	: QOpenGLWidget(parent), 
 	instance(_windowPtr)
 {
+	ofLogVerbose() << "QtGLWidget Ctor";
 	qt_set_sequence_auto_mnemonic(true);
 	mousePressed = 0;
 	setMouseTracking(true);
@@ -20,6 +21,9 @@ QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
 
 QtGLWidget::~QtGLWidget(){
 	ofLogVerbose() << "QtGLWidget Dtor";
+	instance.exit();
+	// cant remove from within
+//	ofGetMainLoop()->removeWindow(std::shared_ptr<ofAppQtWindow>(&instance));
 }
 
 void QtGLWidget::initializeGL()
@@ -29,11 +33,11 @@ void QtGLWidget::initializeGL()
 
 void QtGLWidget::paintGL()
 {
-//	ofLogVerbose() << "begin OF render";
+	ofLogVerbose() << "begin OF render";
 
 	instance.paint();
 
-//	ofLogVerbose() << "end OF render";
+	ofLogVerbose() << "end OF render";
 }
 
 void QtGLWidget::resizeGL(int width, int height)

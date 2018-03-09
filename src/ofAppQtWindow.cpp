@@ -36,7 +36,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
-//	ofLogVerbose() << "ofAppQtWindow Dtor";
+	ofLogVerbose() << "ofAppQtWindow Dtor";
 }
 
 void ofAppQtWindow::close()
@@ -74,6 +74,11 @@ void ofAppQtWindow::setIsWindow(bool value)
 void ofAppQtWindow::paint()
 {
 //	ofLogVerbose() << "ofAppQtWindow paint";
+	if (this == nullptr) {
+		ofLogError() << "ofAppQtWindow has not been initialized!";
+		return;
+	} 
+
 	ofGetMainLoop()->setCurrentWindow(this);
 	if (getWindowShouldClose()) {
 		close();
@@ -221,10 +226,12 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
-//	ofLogVerbose() << "update ofAppQtWindow";
+	ofLogVerbose() << "update ofAppQtWindow";
+	//////////////////////////////////////
+	// process oF events
+	//////////////////////////////////////
 	qtWidgetPtr->makeCurrent();
 	events().notifyUpdate();
-
 	//////////////////////////////////////
 	// process Qt events
 	//////////////////////////////////////
@@ -244,7 +251,7 @@ void ofAppQtWindow::update() {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::draw() {
-//	ofLogVerbose() << "draw ofAppQtWindow";
+	ofLogVerbose() << "draw ofAppQtWindow";
 	currentRenderer->startRender();
 
 	if (bEnableSetupScreen) currentRenderer->setupScreen();
@@ -308,6 +315,18 @@ void ofAppQtWindow::draw() {
 	nFramesSinceWindowResized++;
 }
 
+void ofAppQtWindow::exit()
+{
+	ofLogVerbose() << "ofAppQtWindow exit";
+	events().notifyExit();
+	// wont work:
+//	ofGetMainLoop()->removeWindow(this);
+// this has to be a shared pointer
+	// we have to remove the window from derived class
+	// and this is even worst:
+//	ofGetMainLoop()->removeWindow(std::shared_ptr<ofAppQtWindow>(this));
+}
+
 //------------------------------------------------------------
 ofCoreEvents & ofAppQtWindow::events() {
 	return coreEvents;
@@ -318,7 +337,7 @@ shared_ptr<ofBaseRenderer> & ofAppQtWindow::renderer() {
 	return currentRenderer;
 }
 
-QWidget * ofAppQtWindow::getQOpenGLWidget()
+QWidget * ofAppQtWindow::getQWidgetPtr()
 {
 	return qtWidgetPtr;
 }
