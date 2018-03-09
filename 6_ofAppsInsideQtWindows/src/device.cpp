@@ -9,6 +9,8 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	// here we create a ofapp with an ofQtWindow
 	// then we extract a pointer to QOpenGLWidget
 	// and we insert it in the layout.
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
 
 	// create an app a loop and a window
 	loop = make_shared<ofMainLoop>();
@@ -22,7 +24,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 	// add widget to layout
 	layout = ui.horizontalLayout;
-	layout->addWidget(windowPtr->getQOpenGLWidget());
+	layout->addWidget(windowPtr->getQWidgetPtr());
 	ui.widget_2->setLayout(layout);
 
 	// initialize OF
@@ -37,7 +39,10 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 device::~device()
 {
-	cout << "~device" << endl;
+	ofLogVerbose() << "device Dtor";
+	// ATTENTION HERE!!
+	// we must tell the ofMainLoop that this window has to close.
+	loop->removeWindow(windowPtr);
 }
 
 void device::newframe()

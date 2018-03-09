@@ -84,7 +84,7 @@ public:
 
 	bool getWindowShouldClose() { return bShouldClose; };
 	void setWindowShouldClose(bool value) { bShouldClose = value; };
-
+	bool getWindowIsClosed() { return bIsClosed; };
 	void close();
 
 	void hideCursor();
@@ -168,6 +168,7 @@ private:
 	bool			bWindowNeedsShowing;
 	bool			iconSet;
 	bool			bShouldClose;
+	bool			bIsClosed;
 	bool			hasQtApp;
 	bool			bIsWindow;
 

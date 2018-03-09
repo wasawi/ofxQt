@@ -5,6 +5,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 	ofLogVerbose() << "ofAppQtWindow Ctor";
 
 	bShouldClose = false;
+	bIsClosed = false;
 
 	bEnableSetupScreen = true;
 	buttonPressed = false;
@@ -37,13 +38,14 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
 	ofLogVerbose() << "ofAppQtWindow Dtor";
+	bIsClosed = true;
 }
 
 void ofAppQtWindow::close()
 {
 	ofLogVerbose() << "close";
-	qtWidgetPtr->makeCurrent();
-	events().disable();
+//	qtWidgetPtr->makeCurrent();
+//	events().disable();
 	bWindowNeedsShowing = true;
 }
 
@@ -78,8 +80,9 @@ void ofAppQtWindow::paint()
 		ofLogError() << "ofAppQtWindow has not been initialized!";
 		return;
 	} 
+	if (bIsClosed) return;
 
-	ofGetMainLoop()->setCurrentWindow(this);
+//	ofGetMainLoop()->setCurrentWindow(this);
 	if (getWindowShouldClose()) {
 		close();
 	}
@@ -318,6 +321,8 @@ void ofAppQtWindow::draw() {
 void ofAppQtWindow::exit()
 {
 	ofLogVerbose() << "ofAppQtWindow exit";
+	if (bIsClosed) return;
+
 	events().notifyExit();
 	// wont work:
 //	ofGetMainLoop()->removeWindow(this);

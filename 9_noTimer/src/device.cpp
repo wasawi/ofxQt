@@ -29,9 +29,11 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 device::~device()
 {
-	// tell the ofMainLoop that this window has to close.
+	// ATTENTION HERE!!
+	// we must tell the ofMainLoop that this window has to close.
+	ofGetMainLoop()->removeWindow(windowPtr);
+
 //	ofAppPtr = nullptr; // this removes warnings on console
-//	ofGetMainLoop()->removeWindow(windowPtr);
 }
 
 void device::on_Size_slider_sliderMoved(int value) {

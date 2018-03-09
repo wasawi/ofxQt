@@ -22,7 +22,7 @@ int main( )
 	mainWindow->setVerticalSync(true);
 
 	ofAppQtWindow guiWindow;
-	guiWindow.setQtAppPointer(qtAppPtr);
+//	guiWindow.setQtAppPointer(qtAppPtr);
 	guiWindow.setIsWindow(true);
 	ofSetupOpenGL(&guiWindow, 300, 300, OF_WINDOW);
 	guiWindow.setWindowTitle("GUI Qt widow");
