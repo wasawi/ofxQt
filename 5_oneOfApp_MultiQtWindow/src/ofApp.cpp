@@ -95,7 +95,7 @@ void ofApp::draw(){
 
     ofPushStyle();
     ofSetColor(ofColor::ghostWhite);
-    ofDrawBitmapStringHighlight("value from slider: " + ofToString(radius), 20, 20);
+    ofDrawBitmapStringHighlight("value from slider: " + ofToString(radius.get(),0), 20, 20);
 	ofDrawBitmapString("value from keys: " + key_str, 20, 40);
 	key_str = "";
     ofPopStyle();

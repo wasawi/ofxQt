@@ -17,11 +17,10 @@ public:
 	ofApp();
 	~ofApp();
 
-	shared_ptr<ofAppBaseWindow> window;
-
         void setup();
         void update();
         void draw();
+		void exit();
 
         void keyPressed(ofKeyEventArgs& key);
         void keyReleased(ofKeyEventArgs& key);
@@ -43,10 +42,13 @@ public:
 		ofParameter<ofColor> color;
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
-//		ofxPanel OfGUI;
 
+//		ofxPanel OfGUI;
 		ofxImGui::Gui imgui;
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);
+
+		ofTexture		liveTexture;
+		ofFbo			videoFBO;
 };

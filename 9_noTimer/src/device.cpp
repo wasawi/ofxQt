@@ -6,11 +6,12 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 {
 	ui.setupUi(this);
 
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+
 	// here we create a ofapp with an ofQtWindow
 	// then we extract a pointer to QOpenGLWidget
 	// and we insert it in the layout.
-	ofSetLogLevel(OF_LOG_VERBOSE);
-	ofLogToConsole();
 
 	// create an app and a window and initialize
 	// ofLoop is not used, Qt will call events
@@ -20,7 +21,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	
 	// add widget to layout
 	layout = ui.horizontalLayout;
-	layout->addWidget(windowPtr->getQOpenGLWidget());
+	layout->addWidget(windowPtr->getQWidgetPtr());
 	ui.widget_2->setLayout(layout);
 
 	// initialize OF must be here!
@@ -29,9 +30,11 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 device::~device()
 {
-	// tell the ofMainLoop that this window has to close.
-//	ofAppPtr = nullptr; // this removes warnings on console
+	// ATTENTION HERE!!
+	// we must tell the ofMainLoop that this window has to close.
 	ofGetMainLoop()->removeWindow(windowPtr);
+
+//	ofAppPtr = nullptr; // this removes warnings on console
 }
 
 void device::on_Size_slider_sliderMoved(int value) {

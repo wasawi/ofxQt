@@ -20,6 +20,7 @@ public:
         void setup();
         void update();
         void draw();
+		void exit();
 
         void keyPressed(ofKeyEventArgs& key);
         void keyReleased(ofKeyEventArgs& key);
@@ -43,7 +44,7 @@ public:
 		ofParameter<bool> verticalSync;
 
 //		ofxPanel OfGUI;
-//		ofxImGui::Gui imgui;
+		ofxImGui::Gui imgui;
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);

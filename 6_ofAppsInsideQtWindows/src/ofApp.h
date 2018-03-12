@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
+//#include "ofxGui.h"
+#include "ofxImGui.h"
+#include "imguiTheme.h"
 
 // include Qt always at the end or face glew error
 #include <QSettings>
@@ -12,13 +14,13 @@ namespace Ui {
 
 class ofApp : public ofBaseApp{
 public:
+	ofApp();
 	~ofApp();
-
-	shared_ptr<ofAppBaseWindow> window;
 
         void setup();
         void update();
         void draw();
+		void exit();
 
         void keyPressed(ofKeyEventArgs& key);
         void keyReleased(ofKeyEventArgs& key);
@@ -40,8 +42,13 @@ public:
 		ofParameter<ofColor> color;
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
+
 //		ofxPanel OfGUI;
+//		ofxImGui::Gui imgui;
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);
+
+		ofTexture		liveTexture;
+		ofFbo			videoFBO;
 };

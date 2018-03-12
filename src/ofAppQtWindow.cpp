@@ -5,6 +5,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 	ofLogVerbose() << "ofAppQtWindow Ctor";
 
 	bShouldClose = false;
+	bIsClosed = false;
 
 	bEnableSetupScreen = true;
 	buttonPressed = false;
@@ -24,11 +25,15 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 	bIsWindow = false;
 	bSetupSucceded = false;
 
-	if (parentWidget == 0) {
+	if (parent == 0 ||
+		parent == NULL ||
+		parent == nullptr) {
 		parentWidget = nullptr;
+		bHasParent = false;
 	}
 	else {
 		parentWidget = parent;
+		bHasParent = true;
 	}
 	ofAppPtr = nullptr;
 	qtWidgetPtr = nullptr;
@@ -36,14 +41,15 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 
 //----------------------------------------------------------
 ofAppQtWindow::~ofAppQtWindow() {
-//	ofLogVerbose() << "ofAppQtWindow Dtor";
+	ofLogVerbose() << "ofAppQtWindow Dtor";
+	bIsClosed = true;
 }
 
 void ofAppQtWindow::close()
 {
 	ofLogVerbose() << "close";
-	qtWidgetPtr->makeCurrent();
-	events().disable();
+//	qtWidgetPtr->makeCurrent();
+//	events().disable();
 	bWindowNeedsShowing = true;
 }
 
@@ -73,8 +79,14 @@ void ofAppQtWindow::setIsWindow(bool value)
 
 void ofAppQtWindow::paint()
 {
-//	ofLogVerbose() << "ofAppQtWindow paint";
-	ofGetMainLoop()->setCurrentWindow(this);
+	ofLogVerbose() << "ofAppQtWindow paint";
+	if (this == nullptr) {
+		ofLogError() << "ofAppQtWindow has not been initialized!";
+		return;
+	} 
+	if (bIsClosed) return;
+
+	// draw or close
 	if (getWindowShouldClose()) {
 		close();
 	}
@@ -221,10 +233,17 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
-//	ofLogVerbose() << "update ofAppQtWindow";
+	ofLogVerbose() << "update ofAppQtWindow";
+
+	// this line is very important. 
+	// it forces the of loop to draw FBOs in the correct window.
+	ofGetMainLoop()->setCurrentWindow(this);
+
+	//////////////////////////////////////
+	// process oF events
+	//////////////////////////////////////
 	qtWidgetPtr->makeCurrent();
 	events().notifyUpdate();
-
 	//////////////////////////////////////
 	// process Qt events
 	//////////////////////////////////////
@@ -244,7 +263,7 @@ void ofAppQtWindow::update() {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::draw() {
-//	ofLogVerbose() << "draw ofAppQtWindow";
+	ofLogVerbose() << "draw ofAppQtWindow";
 	currentRenderer->startRender();
 
 	if (bEnableSetupScreen) currentRenderer->setupScreen();
@@ -308,6 +327,29 @@ void ofAppQtWindow::draw() {
 	nFramesSinceWindowResized++;
 }
 
+void ofAppQtWindow::exit()
+{
+	ofLogVerbose() << "ofAppQtWindow exit";
+	if (bIsClosed) return;
+	
+	// this line is very important. 
+	// if we create an ofAppQtWindow from main (e.g. example 3)
+	// and then place an ofRunApp(theWindow, theApp);
+	// when we close the window clicking on the top right close button
+	// then the QtGLWidget will call destructor and call this exit function.
+	// in order to tell the main ofLoop to close this renderer 
+	// we must set this bShouldClose flag to true
+	setWindowShouldClose(true);
+
+	events().notifyExit();
+	// wont work:
+//	ofGetMainLoop()->removeWindow(this);
+// this has to be a shared pointer
+	// we have to remove the window from derived class
+	// and this is even worst:
+//	ofGetMainLoop()->removeWindow(std::shared_ptr<ofAppQtWindow>(this));
+}
+
 //------------------------------------------------------------
 ofCoreEvents & ofAppQtWindow::events() {
 	return coreEvents;
@@ -318,7 +360,7 @@ shared_ptr<ofBaseRenderer> & ofAppQtWindow::renderer() {
 	return currentRenderer;
 }
 
-QWidget * ofAppQtWindow::getQOpenGLWidget()
+QWidget * ofAppQtWindow::getQWidgetPtr()
 {
 	return qtWidgetPtr;
 }

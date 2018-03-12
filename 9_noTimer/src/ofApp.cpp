@@ -6,7 +6,7 @@ ofApp::ofApp(){
 ofApp::~ofApp()
 {
 //	OfGUI.clear();
-//	imgui.close(); // important
+	imgui.close(); // important
 	framerate.removeListener(this, &ofApp::setFramerate);
 	verticalSync.removeListener(this, &ofApp::setVerticalSync);
 }
@@ -15,7 +15,7 @@ ofApp::~ofApp()
 void ofApp::setup(){
 
 
-//	imgui.setup(new ImguiTheme());
+	imgui.setup(new ImguiTheme());
 
 	ofEnableAntiAliasing();
 	ofBackground(ofColor::darkGrey);
@@ -57,10 +57,7 @@ void ofApp::update(){
 	videoFBO.begin();	//----- FBO begin
 //	liveTexture.draw(0, 0);
 
-//	imgui.begin();
-//	ImGui::Text("Hellooooooo!", ofVec2f(0, 0));
-//	imgui.end();
-	ofDrawBitmapStringHighlight("Hellooooooo!", 50, 100);
+	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
 
 	videoFBO.end();		//----- FBO end
 
@@ -69,6 +66,10 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofLogVerbose() << "draw";
+
+	imgui.begin();
+	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
+	imgui.end();
 
 	ofEnableAntiAliasing();
 
@@ -109,6 +110,12 @@ void ofApp::draw(){
 
 	ofSetColor(ofColor::white);
 //	OfGUI.draw();
+}
+
+void ofApp::exit()
+{
+	ofLogVerbose() << "exit";
+//	ofGetMainLoop()->removeWindow(windowPtr);
 }
 
 //--------------------------------------------------------------

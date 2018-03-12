@@ -7,6 +7,10 @@
 
 int main( )
 {
+
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+	
 	// create Qt app
 	int argc = 1;
 	char *argv = "openframeworks";
@@ -18,14 +22,14 @@ int main( )
 	mainWindow->setQtAppPointer(qtAppPtr);
 	mainWindow->setIsWindow(true);
 	ofSetupOpenGL(mainWindow, 400, 200, OF_WINDOW);
-	mainWindow->setWindowTitle("Main Qt widow");
+	mainWindow->setWindowTitle("ofAppQtWindow");
 	mainWindow->setVerticalSync(true);
 
 	ofAppQtWindow guiWindow;
-	guiWindow.setQtAppPointer(qtAppPtr);
+//	guiWindow.setQtAppPointer(qtAppPtr);
 	guiWindow.setIsWindow(true);
 	ofSetupOpenGL(&guiWindow, 300, 300, OF_WINDOW);
-	guiWindow.setWindowTitle("GUI Qt widow");
+	guiWindow.setWindowTitle("ofAppQtWindow");
 	guiWindow.setVerticalSync(true);
 
 	// create one of app

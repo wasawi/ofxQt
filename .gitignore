@@ -206,3 +206,6 @@ export/
 # Qt Stuff
 /build-*
 GeneratedFiles/
+
+# imgui
+*.ini

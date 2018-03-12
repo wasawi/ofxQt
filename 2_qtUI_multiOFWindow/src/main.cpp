@@ -9,8 +9,7 @@ int main( )
 	ofGLFWWindowSettings settings;
 
 	settings.title = "GLFW Main window";
-	settings.width = 400;
-	settings.height = 200;
+	settings.setSize(400, 200);
 	settings.setPosition(ofVec2f(500, 100));
 	settings.resizable = true;
 //	settings.decorated = false;
@@ -18,8 +17,7 @@ int main( )
 	shared_ptr<ofApp> app(new ofApp);
 
 	settings.title = "GLFW GUI window";
-	settings.width = 300;
-	settings.height = 300;
+	settings.setSize(300,300);
 	settings.setPosition(ofVec2f(1100, 100));
 	settings.resizable = false;
 //	settings.decorated = false;

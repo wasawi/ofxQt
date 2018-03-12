@@ -13,10 +13,10 @@ ofApp::~ofApp()
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
+
 	imgui.setup(new ImguiTheme());
 
-	ofLogLevel(OF_LOG_VERBOSE);
-	ofLogToConsole();
 	ofEnableAntiAliasing();
 	ofBackground(ofColor::darkGrey);
 
@@ -35,6 +35,9 @@ void ofApp::setup(){
 
 	framerate.addListener(this, &ofApp::setFramerate);
 	verticalSync.addListener(this, &ofApp::setVerticalSync);
+
+	videoFBO.allocate(400, 200);
+
 }
 
 void ofApp::setFramerate(float & value)
@@ -49,14 +52,23 @@ void ofApp::setVerticalSync(bool & value)
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	ofLogVerbose() << "update";
+
+	videoFBO.begin();	//----- FBO begin
+//	liveTexture.draw(0, 0);
+
+	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
+
+	videoFBO.end();		//----- FBO end
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofLogVerbose() << "draw";
 
 	imgui.begin();
-	ImGui::Text("Stored image sequence not loaded.", ofVec2f(0, 0));
+	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
 	imgui.end();
 
 	ofEnableAntiAliasing();
@@ -65,6 +77,8 @@ void ofApp::draw(){
 	//cout << "window h " << window->getHeight() << endl;
 	//cout << "of w " << ofGetWindowWidth() << endl;
 	//cout << "of h " << ofGetWindowHeight() << endl;
+
+	videoFBO.draw(0,0);
 
 	ofSetColor(ofColor::cyan, 100);
 	int margin = 10;
@@ -96,6 +110,12 @@ void ofApp::draw(){
 
 	ofSetColor(ofColor::white);
 //	OfGUI.draw();
+}
+
+void ofApp::exit()
+{
+	ofLogVerbose() << "exit";
+//	ofGetMainLoop()->removeWindow(windowPtr);
 }
 
 //--------------------------------------------------------------

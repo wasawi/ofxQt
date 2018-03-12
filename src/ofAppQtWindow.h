@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "ofConstants.h"
 #include "ofAppBaseWindow.h"
 #include "ofGLProgrammableRenderer.h"
@@ -51,7 +52,7 @@ public:
 
 //	ofAppQtWindow(QApplication * qtApp = 0);
 	ofAppQtWindow(QWidget *parent = 0);
-	~ofAppQtWindow();
+	virtual ~ofAppQtWindow();
 
 	// Can't be copied, use shared_ptr
 	ofAppQtWindow(ofAppQtWindow & w) = delete;
@@ -71,18 +72,19 @@ public:
 #ifdef TARGET_OPENGLES
 	void setup(const ofGLESWindowSettings & settings);
 #else
-	void setup(const ofGLWindowSettings & settings);
+	void setup(const ofGLWindowSettings & settings) override;
 #endif
 	void setup(const ofQtGLWindowSettings & settings);
-	void update();
-	void draw();
+	void update() override;
+	void draw()	override;
+	void exit();
 	void paint();
 
 //	void paintEvent(QPaintEvent * event) override;
 
-	bool getWindowShouldClose() { return bShouldClose; };
+	bool getWindowShouldClose() override { return bShouldClose; };
 	void setWindowShouldClose(bool value) { bShouldClose = value; };
-
+	bool getWindowIsClosed() { return bIsClosed; };
 	void close();
 
 	void hideCursor();
@@ -97,7 +99,9 @@ public:
 //	QtWindow* getQtWindow();
 //	void * getWindowContext() { return getQtWindow(); }
 	ofGLWindowSettings getSettings() { return settings; };
-	QWidget* getQOpenGLWidget();
+	QWidget* getQWidgetPtr();
+	QWidget* getParentWidget() { return parentWidget; };
+	bool hasParent() { return bHasParent; };
 
 	glm::vec2 	getWindowPosition();
 	glm::vec2	getWindowSize();
@@ -166,6 +170,7 @@ private:
 	bool			bWindowNeedsShowing;
 	bool			iconSet;
 	bool			bShouldClose;
+	bool			bIsClosed;
 	bool			hasQtApp;
 	bool			bIsWindow;
 
@@ -176,6 +181,7 @@ private:
 	QApplication *				qtAppPtr;
 	QWidget*					parentWidget;
 	QtGLWidget*					qtWidgetPtr;
+	bool						bHasParent;
 
 	void setStatusMessage(string s);
 

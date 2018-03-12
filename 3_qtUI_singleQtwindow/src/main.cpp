@@ -8,12 +8,14 @@
 
 int main( )
 {
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+
 	ofQtGLWindowSettings settings;
-	settings.width = 400;
-	settings.height = 200;
+	settings.setSize(400,200);
 	settings.setPosition(ofVec2f(500, 100));
 	settings.resizable = true;
-	settings.title = "Qt window";
+	settings.title = "ofAppQtWindow";
 //	settings.decorated = false;
 	shared_ptr<ofAppQtWindow> mainWindow = make_shared<ofAppQtWindow>();
 	mainWindow->createQtApp();
@@ -21,8 +23,7 @@ int main( )
 	mainWindow->setup(settings);
 
 	ofGLFWWindowSettings settings2;
-	settings2.width = 300;
-	settings2.height = 300;
+	settings.setSize(300, 300);
 	settings2.setPosition(ofVec2f(1100, 100));
 	settings2.resizable = false;
 	settings2.title = "GLFW window";

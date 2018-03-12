@@ -17,7 +17,7 @@ public:
 
 	QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent = 0);
 
-    ~QtGLWidget();
+   virtual ~QtGLWidget();
 	
 	ofAppQtWindow& instance;
 

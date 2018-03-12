@@ -1,21 +1,27 @@
 #include "ofApp.h"
 
-ofApp::ofApp(){
+ofApp::ofApp(QWidget *parent)
+:QofApp(parent){
+	ofLogVerbose() << "ofApp Ctor";
 }
 
 ofApp::~ofApp()
 {
+	ofLogVerbose() << "ofApp Dtor";
 //	OfGUI.clear();
-//	imgui.close(); // important
+	imgui.close(); // important
 	framerate.removeListener(this, &ofApp::setFramerate);
 	verticalSync.removeListener(this, &ofApp::setVerticalSync);
+//	stopRender();
 }
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup()
+{
+	ofLogVerbose() << "ofApp setup";
 
-
-//	imgui.setup(new ImguiTheme());
+	imgui.setup(new ImguiTheme());
+//	ofBackground(10);
 
 	ofEnableAntiAliasing();
 	ofBackground(ofColor::darkGrey);
@@ -55,6 +61,7 @@ void ofApp::update(){
 	ofLogVerbose() << "update";
 
 	videoFBO.begin();	//----- FBO begin
+//	ofSetColor(ofColor::ghostWhite);
 //	liveTexture.draw(0, 0);
 
 	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
@@ -67,19 +74,20 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofLogVerbose() << "draw";
 
-//	imgui.begin();
-//	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
-//	imgui.end();
+	imgui.begin();
+	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
+	imgui.end();
 
-	ofEnableAntiAliasing();
+//cout << "window w " << window->getWidth() << endl;
+//cout << "window h " << window->getHeight() << endl;
+//cout << "of w " << ofGetWindowWidth() << endl;
+//cout << "of h " << ofGetWindowHeight() << endl;
 
-	//cout << "window w " << window->getWidth() << endl;
-	//cout << "window h " << window->getHeight() << endl;
-	//cout << "of w " << ofGetWindowWidth() << endl;
-	//cout << "of h " << ofGetWindowHeight() << endl;
-
+//	ofEnableAntiAliasing();
+	
 	videoFBO.draw(0,0);
 
+	ofPushStyle();
 	ofSetColor(ofColor::cyan, 100);
 	int margin = 10;
 	int size = 10;
@@ -94,29 +102,30 @@ void ofApp::draw(){
 		);
 	}
 
-    ofPushStyle();
+
     ofSetColor(ofColor::ghostWhite);
 	ofDrawBitmapStringHighlight("fps: " + ofToString(ofGetFrameRate(),0), 20, 20);
 	ofDrawBitmapStringHighlight("value from slider: " + ofToString(radius), 20, 40);
 	ofDrawBitmapString("value from keys: " + key_str, 20, 60);
 	key_str = "";
-    ofPopStyle();
+
 	
 	ofSetColor(ofColor::black, 150);
 	ofRect(ofGetWindowWidth()/2- radius/2, ofGetWindowHeight()/2 - radius / 2, radius, radius);
 
 	ofSetColor(color, 100);
 	ofCircle(cursor.x, cursor.y, radius / 2);
+	ofPopStyle();
 
-	ofSetColor(ofColor::white);
+//	ofSetColor(ofColor::white);
 //	OfGUI.draw();
 }
 
-void ofApp::exit()
-{
-	ofLogVerbose() << "exit";
-//	ofGetMainLoop()->removeWindow(windowPtr);
-}
+//void ofApp::exit()
+//{
+//	ofLogVerbose() << "exit";
+//	QofApp::exit();// if you implement exit you need to call base class.
+//}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(ofKeyEventArgs& key){
