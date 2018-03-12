@@ -6,9 +6,10 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 {
 	ui.setupUi(this);
 
-	// create an ofApp instance
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	ofLogToConsole();
+
+	// create an ofApp instance
 	ofAppPtr = make_shared<ofApp>(parent);
 	ofAppPtr->startRender();
 	// startRender() is same as:

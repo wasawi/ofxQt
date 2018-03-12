@@ -21,9 +21,11 @@ QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
 
 QtGLWidget::~QtGLWidget(){
 	ofLogVerbose() << "QtGLWidget Dtor";
-//	if () {	
-		instance.exit();
-//	}
+
+	// if widget is called to close
+	// ofAppQtWindoe must do some cleaup in order not to crash
+	instance.exit();
+
 	// cant remove from within
 //	ofGetMainLoop()->removeWindow(std::shared_ptr<ofAppQtWindow>(&instance));
 }

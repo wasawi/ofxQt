@@ -5,6 +5,10 @@
 
 int main( )
 {
+
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+
 	// create Qt app
 	int argc = 1;
 	char *argv = "openframeworks";
@@ -16,7 +20,7 @@ int main( )
 	settings.setSize(400,200);
 	settings.setPosition(ofVec2f(500, 100));
 	settings.resizable = true;
-	settings.title = "Qt window";
+	settings.title = "ofAppQtWindow";
 
 	shared_ptr<ofAppQtWindow> mainWindow = make_shared<ofAppQtWindow>();
 	mainWindow->setQtAppPointer(qtAppPtr);
@@ -27,7 +31,7 @@ int main( )
 	settings.setSize(300, 300);
 	settings2.setPosition(ofVec2f(1100, 100));
 	settings2.resizable = false;
-	settings.title = "Qt GUI window";
+	settings.title = "ofAppQtWindow";
 
 	shared_ptr<ofAppQtWindow> guiWindow = make_shared<ofAppQtWindow>();
 	guiWindow->setQtAppPointer(qtAppPtr);
@@ -45,7 +49,7 @@ int main( )
 	guiApp->ui = &w;
 	w.show();
 
-	// resgister windows to main loop and run
+	// register windows to main loop and run
 	ofRunApp(mainWindow, mainApp);
 	ofRunApp(guiWindow, guiApp);
 	ofRunMainLoop();

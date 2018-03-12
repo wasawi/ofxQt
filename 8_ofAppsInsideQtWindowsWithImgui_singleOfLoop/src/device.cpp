@@ -6,6 +6,9 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 {
 	ui.setupUi(this);
 
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofLogToConsole();
+
 	// here we create a ofapp with an ofQtWindow
 	// then we extract a pointer to QOpenGLWidget
 	// and we insert it in the layout.

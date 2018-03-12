@@ -3,9 +3,9 @@ Examples Status:
 
 1	OK
 2	OK
-3	crash on close
-4	crash on close
-5	crash on close
+3	OK
+4	OK interaction issues.
+5	OK
 6	OK
 7 	OK
 8 	OK

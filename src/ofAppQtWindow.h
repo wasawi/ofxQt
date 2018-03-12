@@ -72,17 +72,17 @@ public:
 #ifdef TARGET_OPENGLES
 	void setup(const ofGLESWindowSettings & settings);
 #else
-	void setup(const ofGLWindowSettings & settings);
+	void setup(const ofGLWindowSettings & settings) override;
 #endif
 	void setup(const ofQtGLWindowSettings & settings);
-	void update();
-	void draw();
+	void update() override;
+	void draw()	override;
 	void exit();
 	void paint();
 
 //	void paintEvent(QPaintEvent * event) override;
 
-	bool getWindowShouldClose() { return bShouldClose; };
+	bool getWindowShouldClose() override { return bShouldClose; };
 	void setWindowShouldClose(bool value) { bShouldClose = value; };
 	bool getWindowIsClosed() { return bIsClosed; };
 	void close();
