@@ -44,7 +44,7 @@ public:
 		ofParameter<bool> verticalSync;
 
 //		ofxPanel OfGUI;
-//		ofxImGui::Gui imgui;
+		ofxImGui::Gui imgui;
 
 		void setFramerate(float& value);
 		void setVerticalSync(bool& value);

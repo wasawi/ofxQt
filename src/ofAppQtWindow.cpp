@@ -82,7 +82,7 @@ void ofAppQtWindow::paint()
 	} 
 	if (bIsClosed) return;
 
-//	ofGetMainLoop()->setCurrentWindow(this);
+	// draw or close
 	if (getWindowShouldClose()) {
 		close();
 	}
@@ -230,11 +230,18 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
 	ofLogVerbose() << "update ofAppQtWindow";
+
+	// this line is very important. 
+	// it forces the of loop to draw FBOs in the correct window.
+	ofGetMainLoop()->setCurrentWindow(this);
+
 	//////////////////////////////////////
 	// process oF events
 	//////////////////////////////////////
-	qtWidgetPtr->makeCurrent();
-	events().notifyUpdate();
+//	if (getParentWidget() == 0) {
+		qtWidgetPtr->makeCurrent();
+		events().notifyUpdate();
+//	}
 	//////////////////////////////////////
 	// process Qt events
 	//////////////////////////////////////

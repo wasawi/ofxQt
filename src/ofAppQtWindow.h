@@ -100,6 +100,7 @@ public:
 //	void * getWindowContext() { return getQtWindow(); }
 	ofGLWindowSettings getSettings() { return settings; };
 	QWidget* getQWidgetPtr();
+	QWidget* getParentWidget() { return parentWidget; };
 
 	glm::vec2 	getWindowPosition();
 	glm::vec2	getWindowSize();

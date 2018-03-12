@@ -9,7 +9,7 @@ ofApp::~ofApp()
 {
 	ofLogVerbose() << "ofApp Dtor";
 //	OfGUI.clear();
-//	imgui.close(); // important
+	imgui.close(); // important
 	framerate.removeListener(this, &ofApp::setFramerate);
 	verticalSync.removeListener(this, &ofApp::setVerticalSync);
 //	stopRender();
@@ -20,7 +20,7 @@ void ofApp::setup()
 {
 	ofLogVerbose() << "ofApp setup";
 
-//	imgui.setup(new ImguiTheme());
+	imgui.setup(new ImguiTheme());
 //	ofBackground(10);
 
 	ofEnableAntiAliasing();
@@ -64,10 +64,7 @@ void ofApp::update(){
 //	ofSetColor(ofColor::ghostWhite);
 //	liveTexture.draw(0, 0);
 
-//	imgui.begin();
-//	ImGui::Text("Hellooooooo!", ofVec2f(0, 0));
-//	imgui.end();
-	ofDrawBitmapStringHighlight("Hellooooooo!", 50, 100);
+	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
 
 	videoFBO.end();		//----- FBO end
 
@@ -76,6 +73,10 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofLogVerbose() << "draw";
+
+	imgui.begin();
+	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
+	imgui.end();
 
 //cout << "window w " << window->getWidth() << endl;
 //cout << "window h " << window->getHeight() << endl;
