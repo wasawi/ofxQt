@@ -331,6 +331,15 @@ void ofAppQtWindow::exit()
 {
 	ofLogVerbose() << "ofAppQtWindow exit";
 	if (bIsClosed) return;
+	
+	// this line is very important. 
+	// if we create an ofAppQtWindow from main (e.g. example 3)
+	// and then place an ofRunApp(theWindow, theApp);
+	// when we close the window clicking on the top right close button
+	// then the QtGLWidget will call destructor and call this exit function.
+	// in order to tell the main ofLoop to close this renderer 
+	// we must set this bShouldClose flag to true
+	setWindowShouldClose(true);
 
 	events().notifyExit();
 	// wont work:
