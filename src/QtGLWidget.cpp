@@ -37,7 +37,9 @@ void QtGLWidget::paintGL()
 {
 	ofLogVerbose() << "begin OF render";
 
-	instance.paint();
+	if (instance.hasParent()) {
+		instance.paint();
+	}
 
 	ofLogVerbose() << "end OF render";
 }

@@ -12,8 +12,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 	// create an app and a window
 	ofAppPtr = make_shared<ofApp>();
-	windowPtr = make_shared<ofAppQtWindow>(this->parentWidget());
-	ofAppPtr->window = windowPtr;
+	windowPtr = make_shared<ofAppQtWindow>();
 
 	// add the window to the main loop
 	ofGetMainLoop()->addWindow(windowPtr);

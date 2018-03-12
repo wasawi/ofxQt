@@ -101,6 +101,7 @@ public:
 	ofGLWindowSettings getSettings() { return settings; };
 	QWidget* getQWidgetPtr();
 	QWidget* getParentWidget() { return parentWidget; };
+	bool hasParent() { return bHasParent; };
 
 	glm::vec2 	getWindowPosition();
 	glm::vec2	getWindowSize();
@@ -180,6 +181,7 @@ private:
 	QApplication *				qtAppPtr;
 	QWidget*					parentWidget;
 	QtGLWidget*					qtWidgetPtr;
+	bool						bHasParent;
 
 	void setStatusMessage(string s);
 

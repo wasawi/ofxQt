@@ -25,11 +25,15 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 	bIsWindow = false;
 	bSetupSucceded = false;
 
-	if (parentWidget == 0) {
+	if (parent == 0 ||
+		parent == NULL ||
+		parent == nullptr) {
 		parentWidget = nullptr;
+		bHasParent = false;
 	}
 	else {
 		parentWidget = parent;
+		bHasParent = true;
 	}
 	ofAppPtr = nullptr;
 	qtWidgetPtr = nullptr;
@@ -75,7 +79,7 @@ void ofAppQtWindow::setIsWindow(bool value)
 
 void ofAppQtWindow::paint()
 {
-//	ofLogVerbose() << "ofAppQtWindow paint";
+	ofLogVerbose() << "ofAppQtWindow paint";
 	if (this == nullptr) {
 		ofLogError() << "ofAppQtWindow has not been initialized!";
 		return;
@@ -238,10 +242,8 @@ void ofAppQtWindow::update() {
 	//////////////////////////////////////
 	// process oF events
 	//////////////////////////////////////
-//	if (getParentWidget() == 0) {
-		qtWidgetPtr->makeCurrent();
-		events().notifyUpdate();
-//	}
+	qtWidgetPtr->makeCurrent();
+	events().notifyUpdate();
 	//////////////////////////////////////
 	// process Qt events
 	//////////////////////////////////////

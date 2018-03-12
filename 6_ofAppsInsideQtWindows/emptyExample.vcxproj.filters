@@ -67,6 +67,42 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QtGLWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\libs\imgui\src\imgui.cpp">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\libs\imgui\src\imgui_demo.cpp">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\libs\imgui\src\imgui_draw.cpp">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\BaseEngine.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\BaseTheme.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\EngineGLFW.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\EngineOpenGLES.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\EngineVk.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\Gui.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\Helpers.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ofxImGui\src\ofxImGuiLoggerChannel.cpp">
+      <Filter>addons\ImGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imguiTheme.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -98,6 +134,15 @@
     </Filter>
     <Filter Include="addons\ofxQt">
       <UniqueIdentifier>{3a1e62ee-ff5d-4003-b374-5fbdf75790b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ImGui">
+      <UniqueIdentifier>{5ca2cb6f-e2b8-42a9-93f5-7dca566afbfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ImGui\src">
+      <UniqueIdentifier>{d04b1709-e933-4189-861a-e2e8a829894f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ImGui\lib">
+      <UniqueIdentifier>{d5a20bea-07d8-4864-b77a-8b4ec9fab78f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +207,57 @@
     </ClInclude>
     <ClInclude Include="..\src\ofAppQtWindow.h">
       <Filter>addons\ofxQt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\libs\imgui\src\imgui.h">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\libs\imgui\src\imgui_internal.h">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\libs\imgui\src\stb_rect_pack.h">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\libs\imgui\src\stb_textedit.h">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\libs\imgui\src\stb_truetype.h">
+      <Filter>addons\ImGui\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\BaseEngine.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\BaseTheme.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\EngineGLFW.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\EngineOpenGLES.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\EngineVk.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\Gui.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\Helpers.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\imconfig.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\ofxImGui.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\ofxImGuiLoggerChannel.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGui\src\ThemeTest.h">
+      <Filter>addons\ImGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imguiTheme.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

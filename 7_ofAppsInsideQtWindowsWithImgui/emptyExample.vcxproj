@@ -217,6 +217,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\device.cpp" />
+    <ClCompile Include="src\imguiTheme.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainwindow.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
@@ -328,6 +329,7 @@
     <ClInclude Include="..\..\ofxImGui\src\ofxImGui.h" />
     <ClInclude Include="..\..\ofxImGui\src\ThemeTest.h" />
     <ClInclude Include="..\src\ofAppQtWindow.h" />
+    <ClInclude Include="src\imguiTheme.h" />
     <CustomBuild Include="..\src\QtGLWidget.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing QtGLWidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>

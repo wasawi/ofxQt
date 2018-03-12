@@ -16,7 +16,6 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	loop = make_shared<ofMainLoop>();
 	ofAppPtr = make_shared<ofApp>();
 	windowPtr = make_shared<ofAppQtWindow>();
-	ofAppPtr->window = windowPtr;
 
 	// initialize the window
 	ofSetMainLoop(loop);
