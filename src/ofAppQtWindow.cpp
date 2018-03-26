@@ -201,7 +201,7 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	}
 #endif
 
-	ofLogVerbose() << "GL Version:" << glGetString(GL_VERSION);
+//	ofLogVerbose() << "GL Version:" << glGetString(GL_VERSION);
 
 	//////////////////////////////////////
 	// setup renderer
