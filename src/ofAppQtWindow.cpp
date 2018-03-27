@@ -79,7 +79,7 @@ void ofAppQtWindow::setIsWindow(bool value)
 
 void ofAppQtWindow::paint()
 {
-	ofLogVerbose() << "ofAppQtWindow paint";
+//	ofLogVerbose() << "ofAppQtWindow paint";
 	if (this == nullptr) {
 		ofLogError() << "ofAppQtWindow has not been initialized!";
 		return;
@@ -233,7 +233,7 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::update() {
-	ofLogVerbose() << "update ofAppQtWindow";
+///	ofLogVerbose() << "update ofAppQtWindow";
 
 	// this line is very important. 
 	// it forces the of loop to draw FBOs in the correct window.
@@ -263,7 +263,7 @@ void ofAppQtWindow::update() {
 }
 //------------------------------------------------------------
 void ofAppQtWindow::draw() {
-	ofLogVerbose() << "draw ofAppQtWindow";
+///	ofLogVerbose() << "draw ofAppQtWindow";
 	currentRenderer->startRender();
 
 	if (bEnableSetupScreen) currentRenderer->setupScreen();

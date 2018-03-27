@@ -37,13 +37,13 @@ void QtGLWidget::initializeGL()
 
 void QtGLWidget::paintGL()
 {
-	ofLogVerbose() << "begin OF render";
+//	ofLogVerbose() << "begin OF render";
 
 	if (instance.hasParent()) {
 		instance.paint();
 	}
 
-	ofLogVerbose() << "end OF render";
+//	ofLogVerbose() << "end OF render";
 }
 
 void QtGLWidget::resizeGL(int width, int height)
