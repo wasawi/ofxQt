@@ -10,8 +10,6 @@ ofApp::~ofApp()
 	ofLogVerbose() << "ofApp Dtor";
 //	OfGUI.clear();
 	imgui.close(); // important
-	framerate.removeListener(this, &ofApp::setFramerate);
-	verticalSync.removeListener(this, &ofApp::setVerticalSync);
 //	stopRender();
 }
 
@@ -39,21 +37,21 @@ void ofApp::setup()
 	parameters.add(verticalSync.set("verticalSync", true));
 //	OfGUI.setup(parameters);
 
-	framerate.addListener(this, &ofApp::setFramerate);
-	verticalSync.addListener(this, &ofApp::setVerticalSync);
+//	framerate.addListener(this, &ofApp::setFramerate);
+//	verticalSync.addListener(this, &ofApp::setVerticalSync);
 
 	videoFBO.allocate(400, 200);
 
 }
 
-void ofApp::setFramerate(float & value)
+void ofApp::setFramerate(int value)
 {
-	ofSetFrameRate(value);
+	getOfWindow()->setFrameRate(value);
 }
 
-void ofApp::setVerticalSync(bool & value)
+void ofApp::setVerticalSync(bool value)
 {
-	ofSetVerticalSync(value);
+	getOfWindow()->setVerticalSync(value);
 }
 
 //--------------------------------------------------------------

@@ -17,13 +17,18 @@ QtGLWidget::QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent)
 	setUpdateBehavior(QOpenGLWidget::PartialUpdate); // very important
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	parentWidget = parent;
+	initialized = false;
 }
 
 QtGLWidget::~QtGLWidget(){
 	ofLogVerbose() << "QtGLWidget Dtor";
+	
+	if (instance.hasParent() == false) {
+		disconnect(timer, &QTimer::timeout, this, &QtGLWidget::newframe);
+	}
 
 	// if widget is called to close
-	// ofAppQtWindoe must do some cleaup in order not to crash
+	// ofAppQtWindow must do some cleanup in order not to crash
 	instance.exit();
 
 	// cant remove from within
@@ -33,17 +38,46 @@ QtGLWidget::~QtGLWidget(){
 void QtGLWidget::initializeGL()
 {
 	ofLogVerbose() << "initializeGL";
+	if (initialized == false) {
+		if (instance.isUsingLoop()) {
+			ofLogVerbose() << "creating timer";
+			timer = new QTimer(this);
+			connect(timer, &QTimer::timeout, this, &QtGLWidget::newframe);
+			timer->start(1000 / ofGetFrameRate());
+			initialized = true;
+		}
+	}
+	else {
+		ofLogError() << "Already initialized!!";
+	}
 }
 
 void QtGLWidget::paintGL()
 {
 //	ofLogVerbose() << "begin OF render";
-
 	if (instance.hasParent()) {
-		instance.paint();
+		if (instance.isUsingLoop() == false) {
+			instance.paint();
+			return;
+		}
+		if (instance.getVerticalSync()) {
+			instance.makeCurrent();
+			instance.paint();
+			return;
+		}
 	}
 
 //	ofLogVerbose() << "end OF render";
+}
+
+void QtGLWidget::newframe()
+{
+	if (instance.getVerticalSync()) {
+		return;
+	}
+	ofLogVerbose() << "newframe from independent loop";
+	instance.makeCurrent();
+	instance.paint();
 }
 
 void QtGLWidget::resizeGL(int width, int height)
@@ -73,6 +107,26 @@ void QtGLWidget::setAlphabits(int _samples) {
 	setFormat(format);       // Note we set the format on the window...
 	create();                // Create the window
 }
+
+float QtGLWidget::getFrameRate()
+{
+	return timer->interval();
+}
+
+void QtGLWidget::setFrameRate(float value)
+{
+	ofLogVerbose() << "setFrameRate " << value;
+	if (value == 0) {
+		timer->stop();
+		return;
+	}
+	else {
+		float interval = 1000 / value;
+		timer->setInterval(interval);
+		timer->start();
+	}
+}
+
 //------------------------------------------------------------
 static void rotateMouseXY(ofOrientation orientation, int w, int h, double &x, double &y) {
 	int savedY;

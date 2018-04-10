@@ -45,8 +45,8 @@ public:
 //		ofxPanel OfGUI;
 		ofxImGui::Gui imgui;
 
-		void setFramerate(float& value);
-		void setVerticalSync(bool& value);
+		void setFramerate(int value);
+		void setVerticalSync(bool value);
 
 		ofTexture		liveTexture;
 		ofFbo			videoFBO;

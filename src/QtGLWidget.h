@@ -15,7 +15,7 @@ class QtGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 
 public:
 
-	QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent = 0);
+	QtGLWidget(ofAppQtWindow& _windowPtr, QWidget *parent = Q_NULLPTR);
 
    virtual ~QtGLWidget();
 	
@@ -28,6 +28,9 @@ public:
 	void setWindowTitle(string title);
 	void setNumSamples(int _samples);
 	void setAlphabits(int _samples);
+
+	float		getFrameRate();
+	void		setFrameRate(float value);
 
 protected:
 	void initializeGL();					// required from Qt
@@ -76,7 +79,11 @@ private:
 		QPoint lastPos;
 		int mousePressed;	
 		QWidget* parentWidget;
-	public slots:
+		QTimer *timer;
+		bool initialized;
+
+public slots:
+		void newframe();
 
 signals:
 

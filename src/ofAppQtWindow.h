@@ -50,8 +50,7 @@ class ofAppQtWindow : public ofAppBaseGLWindow{
 
 public:
 
-//	ofAppQtWindow(QApplication * qtApp = 0);
-	ofAppQtWindow(QWidget *parent = 0);
+	ofAppQtWindow(QWidget *parent = Q_NULLPTR, bool _useLoop = true);
 	virtual ~ofAppQtWindow();
 
 	// Can't be copied, use shared_ptr
@@ -102,36 +101,41 @@ public:
 	QWidget* getQWidgetPtr();
 	QWidget* getParentWidget() { return parentWidget; };
 	bool hasParent() { return bHasParent; };
+	bool isUsingLoop() { return bIsUsingLoop; };
+//	void useLoop(bool value) { bIsUsingLoop = value; };
 
-	glm::vec2 	getWindowPosition();
-	glm::vec2	getWindowSize();
-	glm::vec2	getScreenSize();
+	glm::vec2 	getWindowPosition()override;
+	glm::vec2	getWindowSize()override;
+	glm::vec2	getScreenSize()override;
 
-	void setWindowTitle(string title);
-	void setWindowPosition(int x, int y);
-	void setWindowShape(int w, int h);
+	void setWindowTitle(string title)override;
+	void setWindowPosition(int x, int y)override;
+	void setWindowShape(int w, int h)override;
 
 //	void			setOrientation(ofOrientation orientation);
 //	ofOrientation	getOrientation();
-	ofWindowMode	getWindowMode();
+	ofWindowMode	getWindowMode() override;
 
 //	void		setFullscreen(bool fullscreen);
 //	void		toggleFullscreen();
 
-	void		enableSetupScreen();
-	void		disableSetupScreen();
+	void		enableSetupScreen() override;
+	void		disableSetupScreen() override;
 
-//	void		setVerticalSync(bool bSync);
+	// if vertical sync is active this window will run at exact 60fps.
+	// other windows will run at 60fps or less, depending on framerate setting.
+	void		setVerticalSync(bool bSync) override;
+	bool		getVerticalSync() {return bVerticalSync;};
 
 //	void        setClipboardString(const string& text);
 //	string      getClipboardString();
 
 //	int         getPixelScreenCoordScale();
 
-	void 		makeCurrent();
-	void		swapBuffers();
-	void		startRender();
-	void		finishRender();
+	void 		makeCurrent()override;
+	void		swapBuffers()override;
+	void		startRender()override;
+	void		finishRender()override;
 
 //	static void listVideoModes();
 //	static void listMonitors();
@@ -145,8 +149,8 @@ public:
 	static void exitApp();
 
 //	int			getFrameNum();
-//	float		getFrameRate();
-//	void		setFrameRate(float targetRate);
+	float		getFrameRate();
+	void		setFrameRate(float targetRate);
 
 
 	ofCoreEvents coreEvents;
@@ -182,6 +186,8 @@ private:
 	QWidget*					parentWidget;
 	QtGLWidget*					qtWidgetPtr;
 	bool						bHasParent;
+	bool						bIsUsingLoop;
+	bool						bVerticalSync;
 
 	void setStatusMessage(string s);
 

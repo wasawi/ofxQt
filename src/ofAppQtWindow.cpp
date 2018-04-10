@@ -1,7 +1,7 @@
 #include "ofAppQtWindow.h"
 
 //----------------------------------------------------------
-ofAppQtWindow::ofAppQtWindow(QWidget *parent){
+ofAppQtWindow::ofAppQtWindow(QWidget *parent, bool _useLoop){
 	ofLogVerbose() << "ofAppQtWindow Ctor";
 
 	bShouldClose = false;
@@ -24,10 +24,10 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent){
 	hasQtApp = false;
 	bIsWindow = false;
 	bSetupSucceded = false;
+	bIsUsingLoop = _useLoop;
+	bVerticalSync = false;
 
-	if (parent == 0 ||
-		parent == NULL ||
-		parent == nullptr) {
+	if (parent == nullptr) {
 		parentWidget = nullptr;
 		bHasParent = false;
 	}
@@ -135,13 +135,14 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	format.setStencilBufferSize(settings.stencilBits);
 	format.setStereo(settings.stereo);
 	format.setSamples(settings.numSamples);
+//	format.setSwapInterval(0); // not working
 	if (settings.doubleBuffering) {
 		format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
 	}
 	else {
 		format.setSwapBehavior(QSurfaceFormat::SingleBuffer);
 	}
-	QSurfaceFormat::setDefaultFormat(format);
+//	QSurfaceFormat::setDefaultFormat(format); // not used? seems to have no effect.
 
 	//////////////////////////////////////
 	// create renderer
@@ -160,7 +161,7 @@ void ofAppQtWindow::setup(const ofQtGLWindowSettings & _settings) {
 	setIsWindow(bIsWindow);
 
 	qtWidgetPtr->resize(settings.getWidth(), settings.getHeight());
-//	qtWidgetPtr->setFormat(format);
+	qtWidgetPtr->setFormat(format);
 	qtWidgetPtr->setWindowTitle(settings.title);
 	//	currentW = qtWidgetPtr->size().width();
 	//	currentH = qtWidgetPtr->size().height();
@@ -380,10 +381,26 @@ void ofAppQtWindow::exitApp() {
 	OF_EXIT_APP(0);
 }
 
-////------------------------------------------------------------
-//float ofAppQtWindow::getFrameRate() {
-//	return qtWidgetPtr->getGlFrameRate();
-//}
+//------------------------------------------------------------
+float ofAppQtWindow::getFrameRate() 
+{
+	if (isUsingLoop()) {
+		return qtWidgetPtr->getFrameRate();
+	}
+	else {
+		return events().getFrameRate();
+	}
+}
+
+void ofAppQtWindow::setFrameRate(float targetRate)
+{
+	if (isUsingLoop()) {
+		qtWidgetPtr->setFrameRate(targetRate);
+	}
+	else {
+		events().setFrameRate(targetRate);
+	}
+}
 
 //------------------------------------------------------------
 void ofAppQtWindow::setWindowTitle(string title) {
@@ -488,6 +505,13 @@ void ofAppQtWindow::enableSetupScreen() {
 //------------------------------------------------------------
 void ofAppQtWindow::disableSetupScreen() {
 	bEnableSetupScreen = false;
+}
+
+//------------------------------------------------------------
+void ofAppQtWindow::setVerticalSync(bool bSync)
+{
+	bVerticalSync = bSync;
+	qtWidgetPtr->update();
 }
 
 void ofAppQtWindow::makeCurrent()

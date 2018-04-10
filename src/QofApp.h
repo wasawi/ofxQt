@@ -14,7 +14,7 @@ class QofApp
 	, public std::enable_shared_from_this<QofApp>
 {
 public:
-	QofApp(QWidget *parent = 0);
+	QofApp(QWidget *parent = Q_NULLPTR, bool _useLoop = true);
 	virtual ~QofApp();
 
 	void startRender();

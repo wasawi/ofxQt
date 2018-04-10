@@ -1,11 +1,12 @@
 #include "QofApp.h"
 
-QofApp::QofApp(QWidget *parent)
+QofApp::QofApp(QWidget *parent, bool _useLoop)
 {
 	ofLogVerbose() << "QofApp Ctor";
-	windowPtr = make_shared<ofAppQtWindow>(parent);
+	windowPtr = make_shared<ofAppQtWindow>(parent, _useLoop);
 	ofSetupOpenGL(windowPtr, 400, 400, OF_WINDOW);
-//	startRender();
+
+	//	startRender();
 	// unfortunately the ofRunApp call can't be used before this constructor has completed
 }
 
