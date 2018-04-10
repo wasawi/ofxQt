@@ -50,10 +50,3 @@ void QofApp::stopRender()
 	ofLogVerbose() << "QofApp stopRender";
 	ofGetMainLoop()->removeWindow(windowPtr);
 }
-
-
-//shared_ptr<ofBaseApp>& QofApp::getOfApp()
-//{
-//	ofAppPtr = make_shared<ofBaseApp>((ofBaseApp&)*this);
-//	return ofAppPtr;
-//}

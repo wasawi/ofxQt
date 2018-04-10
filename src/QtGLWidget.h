@@ -21,10 +21,6 @@ public:
 	
 	ofAppQtWindow& instance;
 
-//	void swapBuffers();
-
-//	void render() override { cout << "r" << endl; }
-
 	void setWindowTitle(string title);
 	void setNumSamples(int _samples);
 	void setAlphabits(int _samples);

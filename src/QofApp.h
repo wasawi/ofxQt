@@ -27,8 +27,4 @@ public:
 protected:
 private:
 	shared_ptr<ofAppQtWindow> windowPtr;
-
-	//	shared_ptr<ofBaseApp> ofAppPtr;
-	//	shared_ptr<ofBaseApp>& getOfApp();
-
 };

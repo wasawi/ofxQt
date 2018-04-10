@@ -25,7 +25,7 @@ ofAppQtWindow::ofAppQtWindow(QWidget *parent, bool _useLoop){
 	bIsWindow = false;
 	bSetupSucceded = false;
 	bIsUsingLoop = _useLoop;
-	bVerticalSync = false;
+	bVerticalSync = true;
 
 	if (parent == nullptr) {
 		parentWidget = nullptr;

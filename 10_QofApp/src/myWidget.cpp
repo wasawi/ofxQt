@@ -15,10 +15,15 @@ myWidget::myWidget( QWidget *parent)
 	// startRender() is same as:
 	//ofRunApp(ofAppPtr->getOfWindow(), ofAppPtr);
 
-// add widget to layout
+	// add widget to layout
 	layout = ui.horizontalLayout;
 	layout->addWidget(ofAppPtr->getQWidgetPtr());
 	ui.widget_2->setLayout(layout);
+
+	// read defaults from window
+	ui.FPS_slider->setValue(ofAppPtr->getOfWindow()->getFrameRate());
+	ui.VerticalSync_checkbox->setChecked(ofAppPtr->getOfWindow()->getVerticalSync());
+
 }
 
 myWidget::~myWidget()

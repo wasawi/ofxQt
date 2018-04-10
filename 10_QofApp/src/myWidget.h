@@ -22,10 +22,7 @@ public:
 	~myWidget();
 
 	QHBoxLayout *layout;
-	
 	shared_ptr<ofApp> ofAppPtr;
-//	shared_ptr<ofAppQtWindow> windowPtr;
-
 	void changeEvent(QEvent *e);
 
 private:
