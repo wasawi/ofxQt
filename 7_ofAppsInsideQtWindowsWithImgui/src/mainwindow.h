@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 #include "ui_mainwindow.h"
-#include "device.h"
+#include "myWidget.h"
 
 // include Qt always at the end or face glew error
 #include <vector>
@@ -28,7 +28,7 @@ public:
 public slots:
 
 void on_actionAdd_OF_app_triggered() {
-	loadSubWindow(new device(this));
+	loadSubWindow(new myWidget(this));
 }
 
 private:

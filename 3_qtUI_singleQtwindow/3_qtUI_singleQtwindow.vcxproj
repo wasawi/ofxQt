@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{247B215A-2E12-440C-B73C-FE4080168408}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <RootNamespace>emptyExample</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src;src;$(QTDIR)\include\;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\GeneratedFiles;C:\openFrameworks\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Qt5Cored.lib;Qt5Guid.lib;Qt5OpenGLd.lib;opengl32.lib;glu32.lib;Qt5UiToolsd.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(QTDIR)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src;src;$(QTDIR)\include\;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\GeneratedFiles;..\..\..\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Qt5Cored.lib;Qt5Guid.lib;Qt5OpenGLd.lib;opengl32.lib;glu32.lib;Qt5UiToolsd.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(QTDIR)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src;src;$(QTDIR)\include\;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\GeneratedFiles;C:\openFrameworks\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5UiTools.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(QTDIR)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src;src;$(QTDIR)\include\;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\GeneratedFiles;..\..\..\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5UiTools.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(QTDIR)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxColorPicker.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxInputField.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\src\ofAppQtWindow.cpp" />
+    <ClCompile Include="..\src\QtGLWidget.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_QtGLWidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QtGuiClass.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QtGLWidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QtGuiClass.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\GuiApp.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\QtGuiClass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\ofApp.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxColorPicker.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxInputField.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <CustomBuild Include="..\src\QtGLWidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing QtGLWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing QtGLWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -DCURL_STATICLIB -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-I.\..\..\..\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing QtGLWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing QtGLWidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-I.\..\..\..\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+    </CustomBuild>
+    <ClInclude Include="..\src\ofAppQtWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_QtGuiClass.h" />
+    <ClInclude Include="src\GuiApp.h" />
+    <CustomBuild Include="src\QtGuiClass.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing QtGuiClass.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing QtGuiClass.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -DCURL_STATICLIB -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-I.\..\..\..\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing QtGuiClass.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing QtGuiClass.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE  "-I$(INHERIT)\." "-I.\..\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-I.\..\..\..\addons\ofxGui\src" "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\QtGuiClass.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" Qt5Version_x0020_x64="msvc2015_64" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

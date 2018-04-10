@@ -5,7 +5,7 @@
 #include "ofMainLoop.h"
 
 // ofApp
-#include "device.h"
+#include "myWidget.h"
 
 // Qt ui
 #include "ui_mainwindow.h"
@@ -33,7 +33,7 @@ public:
 public slots:
 
 void on_actionAdd_OF_app_triggered() {
-	loadSubWindow(new device(this));
+	loadSubWindow(new myWidget(this));
 }
 
 private:

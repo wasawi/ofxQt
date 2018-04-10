@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 #include "ui_mainwindow.h"
-#include "device.h"
+#include "myWidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_actionAdd_OF_app_triggered() {
-	loadSubWindow(new device(this));
+	loadSubWindow(new myWidget(this));
 
 }
 
