@@ -147,7 +147,7 @@
         <item>
          <widget class="QSlider" name="FPS_slider">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -162,13 +162,20 @@
            </size>
           </property>
           <property name="minimum">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="maximum">
-           <number>1000</number>
+           <number>500</number>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="VerticalSync_checkbox">
+          <property name="text">
+           <string>Vertical Sync</string>
           </property>
          </widget>
         </item>

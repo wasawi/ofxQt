@@ -1,13 +1,13 @@
 #include "myWidget.h"
 
 
-myWidget::myWidget( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
+myWidget::myWidget( QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 
-	ofSetLogLevel(OF_LOG_VERBOSE);
-	ofLogToConsole();
+//	ofSetLogLevel(OF_LOG_VERBOSE);
+//	ofLogToConsole();
 
 	// create an ofApp instance
 	ofAppPtr = make_shared<ofApp>(parent);
@@ -27,6 +27,16 @@ myWidget::~myWidget()
 
 void myWidget::on_Size_slider_sliderMoved(int value) {
 	ofAppPtr->radius.set(value);
+}
+
+void myWidget::on_FPS_slider_sliderMoved(int value)
+{
+	ofAppPtr->setFramerate(value);
+}
+
+void myWidget::on_VerticalSync_checkbox_stateChanged(int value)
+{
+	ofAppPtr->setVerticalSync(value);
 }
 
 void myWidget::changeEvent(QEvent *e)

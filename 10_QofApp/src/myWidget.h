@@ -33,4 +33,6 @@ private:
 
 public slots:
 	void on_Size_slider_sliderMoved(int value);
+	void on_FPS_slider_sliderMoved(int value);
+	void on_VerticalSync_checkbox_stateChanged(int value);
 };
