@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <ProjectGuid>{1549B189-333F-4FF9-A878-E54BC986F285}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
     <RootNamespace>emptyExample</RootNamespace>
   </PropertyGroup>
@@ -196,11 +196,11 @@
     <ClCompile Include="..\..\ofxImGui\src\Helpers.cpp" />
     <ClCompile Include="..\src\ofAppQtWindow.cpp" />
     <ClCompile Include="..\src\QtGLWidget.cpp" />
-    <ClCompile Include="GeneratedFiles\Debug\moc_device.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_myWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -208,11 +208,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_device.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_myWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -220,10 +220,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\device.cpp" />
     <ClCompile Include="src\imguiTheme.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainwindow.cpp" />
+    <ClCompile Include="src\myWidget.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -333,27 +333,27 @@
     <ClInclude Include="..\..\ofxImGui\src\ofxImGui.h" />
     <ClInclude Include="..\..\ofxImGui\src\ThemeTest.h" />
     <ClInclude Include="..\src\ofAppQtWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_myWidget.h" />
     <ClInclude Include="src\imguiTheme.h" />
-    <CustomBuild Include="..\src\QtGLWidget.h">
+    <CustomBuild Include="src\myWidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE "-I$(INHERIT)\." "-I.\..\src" "-I.\..\..\ofxImGui\src" "-I.\..\..\ofxImGui\libs\imgui\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -DCURL_STATICLIB -D_UNICODE -DUNICODE "-I$(INHERIT)\." "-I.\..\src" "-I.\..\..\ofxImGui\src" "-I.\..\..\ofxImGui\libs\imgui\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE "-I$(INHERIT)\." "-I.\..\src" "-I.\..\..\ofxImGui\src" "-I.\..\..\ofxImGui\libs\imgui\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DWIN32 -DNDEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE -DUNICODE "-I$(INHERIT)\." "-I.\..\src" "-I.\..\..\ofxImGui\src" "-I.\..\..\ofxImGui\libs\imgui\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <ClInclude Include="GeneratedFiles\ui_device.h" />
-    <CustomBuild Include="src\device.h">
+    <CustomBuild Include="..\src\QtGLWidget.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -DPOCO_STATIC -DCAIRO_WIN32_STATIC_BUILD -DDISABLE_SOME_FLOATING_POINT -D_UNICODE "-I$(INHERIT)\." "-I.\..\src" "-I.\..\..\ofxImGui\src" "-I.\..\..\ofxImGui\libs\imgui\src" "-I.\src" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets" "-I.\GeneratedFiles" "-IC:\openFrameworks\addons\ofxGui\src" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(OF_ROOT)\libs\openFrameworks" "-I$(OF_ROOT)\libs\openFrameworks\graphics" "-I$(OF_ROOT)\libs\openFrameworks\app" "-I$(OF_ROOT)\libs\openFrameworks\sound" "-I$(OF_ROOT)\libs\openFrameworks\utils" "-I$(OF_ROOT)\libs\openFrameworks\communication" "-I$(OF_ROOT)\libs\openFrameworks\video" "-I$(OF_ROOT)\libs\openFrameworks\types" "-I$(OF_ROOT)\libs\openFrameworks\math" "-I$(OF_ROOT)\libs\openFrameworks\3d" "-I$(OF_ROOT)\libs\openFrameworks\gl" "-I$(OF_ROOT)\libs\openFrameworks\events" "-I$(OF_ROOT)\libs\glm\include" "-I$(OF_ROOT)\libs\rtAudio\include" "-I$(OF_ROOT)\libs\quicktime\include" "-I$(OF_ROOT)\libs\freetype\include" "-I$(OF_ROOT)\libs\freetype\include\freetype2" "-I$(OF_ROOT)\libs\freeImage\include" "-I$(OF_ROOT)\libs\fmodex\include" "-I$(OF_ROOT)\libs\videoInput\include" "-I$(OF_ROOT)\libs\glew\include" "-I$(OF_ROOT)\libs\glu\include" "-I$(OF_ROOT)\libs\tess2\include" "-I$(OF_ROOT)\libs\cairo\include\cairo" "-I$(OF_ROOT)\libs\glfw\include" "-I$(OF_ROOT)\libs\openssl\include" "-I$(OF_ROOT)\libs\utf8\include" "-I$(OF_ROOT)\libs\boost\include" "-I$(OF_ROOT)\libs\json\include" "-I$(OF_ROOT)\libs\curl\include" "-I$(OF_ROOT)\libs\uriparser\include" "-I$(OF_ROOT)\libs\pugixml\include" "-I$(OF_ROOT)\addons"</Command>
@@ -373,7 +373,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="src\device.ui">
+    <CustomBuild Include="src\myWidget.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>

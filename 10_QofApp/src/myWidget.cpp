@@ -1,7 +1,7 @@
-#include "device.h"
+#include "myWidget.h"
 
 
-device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
+myWidget::myWidget( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -21,15 +21,15 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	ui.widget_2->setLayout(layout);
 }
 
-device::~device()
+myWidget::~myWidget()
 {
 }
 
-void device::on_Size_slider_sliderMoved(int value) {
+void myWidget::on_Size_slider_sliderMoved(int value) {
 	ofAppPtr->radius.set(value);
 }
 
-void device::changeEvent(QEvent *e)
+void myWidget::changeEvent(QEvent *e)
 {
 	if (e->type() == QEvent::WindowStateChange) {
 

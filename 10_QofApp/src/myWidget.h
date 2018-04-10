@@ -4,7 +4,7 @@
 
 #include "ofApp.h"
 #include "QtGLWidget.h"
-#include "ui_device.h"
+#include "ui_myWidget.h"
 
 // include Qt always at the end or face glew error
 #include <QWidget>
@@ -13,21 +13,23 @@
 #include <QTimer>
 #include <QThread>
 
-class device : public QWidget
+class myWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	device( QWidget *parent = Q_NULLPTR);
-	~device();
+	myWidget( QWidget *parent = Q_NULLPTR);
+	~myWidget();
 
 	QHBoxLayout *layout;
 	
 	shared_ptr<ofApp> ofAppPtr;
-	shared_ptr<ofAppQtWindow> windowPtr;
+//	shared_ptr<ofAppQtWindow> windowPtr;
+
+	void changeEvent(QEvent *e);
 
 private:
-	Ui::device ui;
+	Ui::myWidget ui;
 
 public slots:
 	void on_Size_slider_sliderMoved(int value);

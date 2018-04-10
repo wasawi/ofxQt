@@ -4,7 +4,7 @@
 
 #include "ofApp.h"
 #include "QtGLWidget.h"
-#include "ui_device.h"
+#include "ui_myWidget.h"
 
 #include <QWidget>
 #include <QOpenGLWidget>
@@ -12,13 +12,13 @@
 #include <QTimer>
 #include <QThread>
 
-class device : public QWidget
+class myWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	device( QWidget *parent = Q_NULLPTR);
-	~device();
+	myWidget( QWidget *parent = Q_NULLPTR);
+	~myWidget();
 
 	QHBoxLayout *layout;
 	QTimer *timer;
@@ -28,7 +28,7 @@ public:
 	shared_ptr<ofAppQtWindow> windowPtr;
 
 private:
-	Ui::device ui;
+	Ui::myWidget ui;
 
 public slots:
 	void on_horizontalSlider_sliderMoved(int value);

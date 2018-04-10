@@ -20,6 +20,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7_ofAppsInsideQtWindowsWith
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8_ofAppsInsideQtWindowsWithImgui_singleOfLoop", "8_ofAppsInsideQtWindowsWithImgui_singleOfLoop\8_ofAppsInsideQtWindowsWithImgui_singleOfLoop.vcxproj", "{589576A4-7EDF-4C28-AFCD-8465737DA766}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9_noTimer", "9_noTimer\9_noTimer.vcxproj", "{1549B189-333F-4FF9-A878-E54BC986F285}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10_QofApp", "10_QofApp\10_QofApp.vcxproj", "{ADE746AD-DBAE-4951-BF66-CA348161DB87}"
 EndProject
 Global
@@ -98,6 +100,14 @@ Global
 		{589576A4-7EDF-4C28-AFCD-8465737DA766}.Release|Win32.Build.0 = Release|Win32
 		{589576A4-7EDF-4C28-AFCD-8465737DA766}.Release|x64.ActiveCfg = Release|x64
 		{589576A4-7EDF-4C28-AFCD-8465737DA766}.Release|x64.Build.0 = Release|x64
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Debug|Win32.Build.0 = Debug|Win32
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Debug|x64.ActiveCfg = Debug|x64
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Debug|x64.Build.0 = Debug|x64
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Release|Win32.ActiveCfg = Release|Win32
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Release|Win32.Build.0 = Release|Win32
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Release|x64.ActiveCfg = Release|x64
+		{1549B189-333F-4FF9-A878-E54BC986F285}.Release|x64.Build.0 = Release|x64
 		{ADE746AD-DBAE-4951-BF66-CA348161DB87}.Debug|Win32.ActiveCfg = Debug|Win32
 		{ADE746AD-DBAE-4951-BF66-CA348161DB87}.Debug|Win32.Build.0 = Debug|Win32
 		{ADE746AD-DBAE-4951-BF66-CA348161DB87}.Debug|x64.ActiveCfg = Debug|x64

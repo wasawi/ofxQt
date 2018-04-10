@@ -1,7 +1,7 @@
-#include "device.h"
+#include "myWidget.h"
 
 
-device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
+myWidget::myWidget( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -28,7 +28,7 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	ofRunApp(windowPtr, ofAppPtr);
 }
 
-device::~device()
+myWidget::~myWidget()
 {
 	// ATTENTION HERE!!
 	// we must tell the ofMainLoop that this window has to close.
@@ -37,11 +37,11 @@ device::~device()
 //	ofAppPtr = nullptr; // this removes warnings on console
 }
 
-void device::on_Size_slider_sliderMoved(int value) {
+void myWidget::on_Size_slider_sliderMoved(int value) {
 	ofAppPtr->radius.set(value);
 }
 
-void device::changeEvent(QEvent *e)
+void myWidget::changeEvent(QEvent *e)
 {
 	if (e->type() == QEvent::WindowStateChange) {
 

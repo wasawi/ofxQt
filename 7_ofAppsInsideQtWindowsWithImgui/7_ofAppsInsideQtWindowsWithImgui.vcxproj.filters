@@ -46,15 +46,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\device.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_device.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_device.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\ofAppQtWindow.cpp">
       <Filter>addons\ofxQt</Filter>
     </ClCompile>
@@ -96,6 +87,15 @@
     </ClCompile>
     <ClCompile Include="src\imguiTheme.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_myWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_myWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,14 +158,14 @@
     <CustomBuild Include="src\mainwindow.ui">
       <Filter>src</Filter>
     </CustomBuild>
-    <CustomBuild Include="src\device.h">
-      <Filter>src</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\device.ui">
-      <Filter>src</Filter>
-    </CustomBuild>
     <CustomBuild Include="..\src\QtGLWidget.h">
       <Filter>addons\ofxQt</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myWidget.h">
+      <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myWidget.ui">
+      <Filter>src</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -201,9 +201,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_device.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ofAppQtWindow.h">
       <Filter>addons\ofxQt</Filter>
@@ -252,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="src\imguiTheme.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_myWidget.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

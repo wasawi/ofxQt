@@ -1,7 +1,7 @@
-#include "device.h"
+#include "myWidget.h"
 
 
-device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
+myWidget::myWidget( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -32,20 +32,20 @@ device::device( QWidget *parent)//shared_ptr<ofApp> _ofAppPtr,
 
 	timer = new QTimer(this);
 //	connect(timer, &QTimer::timeout, [=]() { newframe(); });
-	connect(timer, &QTimer::timeout, this, &device::newframe);
+	connect(timer, &QTimer::timeout, this, &myWidget::newframe);
 
 	timer->start(10);
 }
 
-device::~device()
+myWidget::~myWidget()
 {
-	ofLogVerbose() << "device Dtor";
+	ofLogVerbose() << "myWidget Dtor";
 	// ATTENTION HERE!!
 	// we must tell the ofMainLoop that this window has to close.
 	loop->removeWindow(windowPtr);
 }
 
-void device::newframe()
+void myWidget::newframe()
 {
 //	loop->loopOnce();
 
@@ -62,9 +62,9 @@ void device::newframe()
 	}
 }
 
-void device::on_horizontalSlider_sliderMoved(int value) {
+void myWidget::on_horizontalSlider_sliderMoved(int value) {
 	ofAppPtr->radius.set(value);
 }
-void device::on_horizontalSlider_2_sliderMoved(int value) {
+void myWidget::on_horizontalSlider_2_sliderMoved(int value) {
 	timer->setInterval(1000 / value);
 }
