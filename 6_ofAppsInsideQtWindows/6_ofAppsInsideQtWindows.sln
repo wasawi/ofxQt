@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6_ofAppsInsideQtWindows", "6_ofAppsInsideQtWindows.vcxproj", "{7FD42DF7-442E-479A-BA76-D0022F99702A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj", "{5837595D-ACA9-485C-8E76-729040CE4B0B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6_ofAppsInsideQtWindows", "6_ofAppsInsideQtWindows.vcxproj", "{24E7864A-D582-4C99-A06D-0EF795852FDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,20 +14,23 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|Win32.ActiveCfg = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|Win32.Build.0 = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.ActiveCfg = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Debug|x64.Build.0 = Debug|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|Win32.ActiveCfg = Release|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|Win32.Build.0 = Release|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.ActiveCfg = Release|x64
-		{7FD42DF7-442E-479A-BA76-D0022F99702A}.Release|x64.Build.0 = Release|x64
 		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|Win32.ActiveCfg = Debug|x64
 		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Debug|x64.ActiveCfg = Debug|x64
 		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|Win32.ActiveCfg = Release|x64
 		{5837595D-ACA9-485C-8E76-729040CE4B0B}.Release|x64.ActiveCfg = Release|x64
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Debug|Win32.Build.0 = Debug|Win32
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Debug|x64.ActiveCfg = Debug|x64
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Debug|x64.Build.0 = Debug|x64
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Release|Win32.ActiveCfg = Release|Win32
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Release|Win32.Build.0 = Release|Win32
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Release|x64.ActiveCfg = Release|x64
+		{24E7864A-D582-4C99-A06D-0EF795852FDD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = $(DefaultQtVersion)
 	EndGlobalSection
 EndGlobal

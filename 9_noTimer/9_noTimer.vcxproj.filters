@@ -155,9 +155,6 @@
     <CustomBuild Include="src\mainwindow.h">
       <Filter>src</Filter>
     </CustomBuild>
-    <CustomBuild Include="src\mainwindow.ui">
-      <Filter>src</Filter>
-    </CustomBuild>
     <CustomBuild Include="..\src\QtGLWidget.h">
       <Filter>addons\ofxQt</Filter>
     </CustomBuild>
@@ -165,6 +162,9 @@
       <Filter>src</Filter>
     </CustomBuild>
     <CustomBuild Include="src\myWidget.ui">
+      <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\mainwindow.ui">
       <Filter>src</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -251,6 +251,9 @@
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_myWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_mainwindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
