@@ -321,7 +321,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="icon.rc" Qt5Version_x0020_x64="msvc2015_64" />
+      <UserProperties RESOURCE_FILE="icon.rc" Qt5Version_x0020_Win32="$(DefaultQtVersion)" Qt5Version_x0020_x64="msvc2015_64" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
