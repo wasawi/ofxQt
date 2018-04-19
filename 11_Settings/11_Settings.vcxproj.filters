@@ -156,6 +156,9 @@
     <Filter Include="addons\ofxImGui\libs\imgui\src">
       <UniqueIdentifier>{40e8a326-687e-4cd6-ae44-5cf1ca234cfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxImGuiParameter">
+      <UniqueIdentifier>{feac6372-aa1b-49d5-964f-6c68477fe57a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
@@ -276,6 +279,15 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_myWidget_B.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGuiParameter\src\ofxImGuiParameter.h">
+      <Filter>addons\ofxImGuiParameter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGuiParameter\src\ofxImGuiParameterUtils.h">
+      <Filter>addons\ofxImGuiParameter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ofxImGuiParameter\src\ofxImGuiWidgets.h">
+      <Filter>addons\ofxImGuiParameter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

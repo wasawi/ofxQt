@@ -24,14 +24,13 @@ void ofApp::setup()
 	ofEnableAntiAliasing();
 	ofBackground(ofColor::darkGrey);
 
-	cursor = ofPoint(
-		ofGetWindowWidth() / 2, 
-		ofGetWindowHeight() / 2);
-
 	key_str = "";
 
 	parameters.setName("parameters");
 	parameters.add(radius.set("radius", 50, 1, 100));
+	parameters.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
+	parameters.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
+
 	parameters.add(color.set("color", ofColor::yellow, 0, 255));
 	parameters.add(framerate.set("framerate", 60, 1, 100));
 	parameters.add(verticalSync.set("verticalSync", true));
@@ -65,7 +64,6 @@ void ofApp::update(){
 	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
 
 	videoFBO.end();		//----- FBO end
-
 }
 
 //--------------------------------------------------------------
@@ -74,19 +72,22 @@ void ofApp::draw(){
 
 	imgui.begin();
 	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
+	radius.draw();
+	posX.draw();
+	posY.draw();
 	imgui.end();
 
-//cout << "window w " << window->getWidth() << endl;
-//cout << "window h " << window->getHeight() << endl;
-//cout << "of w " << ofGetWindowWidth() << endl;
-//cout << "of h " << ofGetWindowHeight() << endl;
+// 	cout << "window w " << getOfWindow()->getWidth() << endl;
+// 	cout << "window h " << getOfWindow()->getHeight() << endl;
+// 	cout << "of w " << ofGetWindowWidth() << endl;
+// 	cout << "of h " << ofGetWindowHeight() << endl;
 
 //	ofEnableAntiAliasing();
 	
 	videoFBO.draw(0,0);
 
 	ofPushStyle();
-	ofSetColor(ofColor::cyan, 100);
+	ofSetColor(ofColor::white, 50);
 	int margin = 10;
 	int size = 10;
 	for (int i = 0; i < 100; i++) {
@@ -108,11 +109,11 @@ void ofApp::draw(){
 	key_str = "";
 
 	
-	ofSetColor(ofColor::black, 150);
-	ofRect(ofGetWindowWidth()/2- radius/2, ofGetWindowHeight()/2 - radius / 2, radius, radius);
+// 	ofSetColor(ofColor::black, 150);
+// 	ofRect(ofGetWindowWidth()/2- radius/2, ofGetWindowHeight()/2 - radius / 2, radius, radius);
 
 	ofSetColor(color, 100);
-	ofCircle(cursor.x, cursor.y, radius / 2);
+	ofCircle(posX, posY, radius / 2);
 	ofPopStyle();
 
 //	ofSetColor(ofColor::white);
@@ -143,7 +144,8 @@ void ofApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-	cursor = ofPoint(x, y);
+	posX = x;
+	posY = y;
 }
 
 //--------------------------------------------------------------
@@ -168,7 +170,8 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+	posX.set("posX", posX, 0.0f, ofGetWindowWidth());
+	posY.set("posY", posY, 0.0f, ofGetWindowHeight());
 }
 
 //--------------------------------------------------------------

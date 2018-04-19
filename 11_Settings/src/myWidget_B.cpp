@@ -24,6 +24,11 @@ myWidget_B::myWidget_B( QWidget *parent)
 	ui.FPS_slider->setValue(ofAppPtr->getOfWindow()->getFrameRate());
 	ui.VerticalSync_checkbox->setChecked(ofAppPtr->getOfWindow()->getVerticalSync());
 
+	ofAddListener(ofAppPtr->getOfWindow()->events().draw, this, &myWidget_B::redraw);
+	//connect(
+	//	ofAppPtr.get(), &ofApp::draw,
+	//	this, &myWidget_B::redraw
+	//);
 }
 
 myWidget_B::~myWidget_B()
@@ -42,6 +47,13 @@ void myWidget_B::on_FPS_slider_sliderMoved(int value)
 void myWidget_B::on_VerticalSync_checkbox_stateChanged(int value)
 {
 	ofAppPtr->setVerticalSync(value);
+}
+
+void myWidget_B::redraw(ofEventArgs& event)
+{
+	// we need to add here all values that are changed on draw
+	// e.g. those changed by ImGui
+	ui.Size_slider->setValue(ofAppPtr->radius);
 }
 
 void myWidget_B::changeEvent(QEvent *e)

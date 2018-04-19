@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxGui.h"
 #include "ofxImGui.h"
 #include "imguiTheme.h"
+#include "ofxImGuiWidgets.h"
 
 #include "QofApp.h"
 
@@ -33,11 +33,12 @@ public:
         void dragEvent(ofDragInfo dragInfo) override;
         void gotMessage(ofMessage msg) override;
 		
-		ofPoint cursor;
 		string key_str;
 
 		ofParameterGroup parameters;
-		ofParameter<float> radius;
+		SliderFloat radius;
+		SliderFloat posX;
+		SliderFloat posY;
 		ofParameter<ofColor> color;
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
