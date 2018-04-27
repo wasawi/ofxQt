@@ -11,10 +11,10 @@ namespace Ui {
     class MainWindow;
 }
 
-class ofApp : public QofApp {
+class ofApp_A : public QofApp {
 public:
-	ofApp(QWidget *parent = Q_NULLPTR);
-	~ofApp();
+	ofApp_A(QWidget *parent = Q_NULLPTR);
+	~ofApp_A();
 
         void setup() override;
         void update() override;

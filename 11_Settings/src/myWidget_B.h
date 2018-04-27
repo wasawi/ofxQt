@@ -2,9 +2,11 @@
 
 #include "ofMain.h"
 
-#include "ofApp.h"
 #include "QtGLWidget.h"
-#include "ui_myWidget_B.h"
+
+#include "ofApp_B.h"
+#include "myModel_B.h"
+#include "ui_MyWidget_B.h"
 
 // include Qt always at the end or face glew error
 #include <QWidget>
@@ -12,25 +14,33 @@
 #include <QHBoxLayout>
 #include <QTimer>
 #include <QThread>
+#include <QTableView>
 
-class myWidget_B : public QWidget
-{
+class MyWidget_B : public QWidget{
 	Q_OBJECT
 
 public:
-	myWidget_B( QWidget *parent = Q_NULLPTR);
-	~myWidget_B();
+	MyWidget_B( 
+		QWidget *parent = Q_NULLPTR
+		, MyModel_B* model_B = Q_NULLPTR
+	);
+	~MyWidget_B();
+
+	MyModel_B* myModel_B;
+	QTableView* tableView;
 
 	QHBoxLayout *layout;
-	shared_ptr<ofApp> ofAppPtr;
+	shared_ptr<ofApp_B> ofAppPtr;
 	void changeEvent(QEvent *e);
 
 private:
-	Ui::myWidget_B ui;
+	Ui::MyWidget_B ui;
 
 public slots:
 	void on_Size_slider_sliderMoved(int value);
+	void on_Angle_slider_sliderMoved(int value);
 	void on_FPS_slider_sliderMoved(int value);
 	void on_VerticalSync_checkbox_stateChanged(int value);
-	void redraw(ofEventArgs& event);
+	void updateUI(ofEventArgs& event);
 };
+ 

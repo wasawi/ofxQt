@@ -1,7 +1,8 @@
-#include "myWidget_B.h"
+#include "MyWidget_B.h"
 
-
-myWidget_B::myWidget_B( QWidget *parent)
+MyWidget_B::MyWidget_B( 
+	QWidget *parent, 
+	MyModel_B* model_B)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -9,8 +10,13 @@ myWidget_B::myWidget_B( QWidget *parent)
 //	ofSetLogLevel(OF_LOG_VERBOSE);
 //	ofLogToConsole();
 
+	myModel_B = model_B;
+	QTableView* tableView = new QTableView(this);
+	tableView->setModel(model_B);
+	ui.frame->layout()->addWidget(tableView);
+
 	// create an ofApp instance
-	ofAppPtr = make_shared<ofApp>(parent);
+	ofAppPtr = make_shared<ofApp_B>(parent);
 	ofAppPtr->startRender();
 	// startRender() is same as:
 	//ofRunApp(ofAppPtr->getOfWindow(), ofAppPtr);
@@ -22,41 +28,55 @@ myWidget_B::myWidget_B( QWidget *parent)
 
 	// read defaults from window
 	ui.FPS_slider->setValue(ofAppPtr->getOfWindow()->getFrameRate());
+	ui.FPS_slider->setMaximum(ofAppPtr->framerate.getMax());
+	ui.FPS_slider->setMinimum(ofAppPtr->framerate.getMin());
+
+	ui.Angle_slider->setValue(ofAppPtr->angle);
+	ui.Angle_slider->setMaximum(ofAppPtr->angle.getMax());
+	ui.Angle_slider->setMinimum(ofAppPtr->angle.getMin());
+
 	ui.VerticalSync_checkbox->setChecked(ofAppPtr->getOfWindow()->getVerticalSync());
 
-	ofAddListener(ofAppPtr->getOfWindow()->events().draw, this, &myWidget_B::redraw);
+	// Add listeners
+	ofAddListener(ofAppPtr->getOfWindow()->events().draw, this, &MyWidget_B::updateUI);
 	//connect(
 	//	ofAppPtr.get(), &ofApp::draw,
-	//	this, &myWidget_B::redraw
+	//	this, &MyWidget_B::redraw
 	//);
 }
 
-myWidget_B::~myWidget_B()
+MyWidget_B::~MyWidget_B()
 {
 }
 
-void myWidget_B::on_Size_slider_sliderMoved(int value) {
+void MyWidget_B::on_Size_slider_sliderMoved(int value) 
+{
 	ofAppPtr->radius.set(value);
 }
+void MyWidget_B::on_Angle_slider_sliderMoved(int value) 
+{
+	ofAppPtr->angle.set(value);
+}
 
-void myWidget_B::on_FPS_slider_sliderMoved(int value)
+void MyWidget_B::on_FPS_slider_sliderMoved(int value)
 {
 	ofAppPtr->setFramerate(value);
 }
 
-void myWidget_B::on_VerticalSync_checkbox_stateChanged(int value)
+void MyWidget_B::on_VerticalSync_checkbox_stateChanged(int value)
 {
 	ofAppPtr->setVerticalSync(value);
 }
 
-void myWidget_B::redraw(ofEventArgs& event)
+void MyWidget_B::updateUI(ofEventArgs& event)
 {
 	// we need to add here all values that are changed on draw
 	// e.g. those changed by ImGui
 	ui.Size_slider->setValue(ofAppPtr->radius);
+	ui.Angle_slider->setValue(ofAppPtr->angle);
 }
 
-void myWidget_B::changeEvent(QEvent *e)
+void MyWidget_B::changeEvent(QEvent *e)
 {
 	if (e->type() == QEvent::WindowStateChange) {
 

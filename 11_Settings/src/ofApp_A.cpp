@@ -1,22 +1,24 @@
-#include "ofApp.h"
+#include "ofApp_A.h"
 
-ofApp::ofApp(QWidget *parent)
+//--------------------------------------------------------------
+ofApp_A::ofApp_A(QWidget *parent)
 :QofApp(parent){
-	ofLogVerbose() << "ofApp Ctor";
+	ofLogVerbose() << "ofApp_A Ctor";
 }
 
-ofApp::~ofApp()
+//--------------------------------------------------------------
+ofApp_A::~ofApp_A()
 {
-	ofLogVerbose() << "ofApp Dtor";
+	ofLogVerbose() << "ofApp_A Dtor";
 //	OfGUI.clear();
 	imgui.close(); // important
 //	stopRender();
 }
 
 //--------------------------------------------------------------
-void ofApp::setup()
+void ofApp_A::setup()
 {
-	ofLogVerbose() << "ofApp setup";
+	ofLogVerbose() << "ofApp_A setup";
 
 	imgui.setup(new ImguiTheme());
 //	ofBackground(10);
@@ -32,42 +34,47 @@ void ofApp::setup()
 	parameters.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
 
 	parameters.add(color.set("color", ofColor::yellow, 0, 255));
-	parameters.add(framerate.set("framerate", 60, 1, 100));
+	parameters.add(framerate.set("framerate", 60, 0, 120));
 	parameters.add(verticalSync.set("verticalSync", true));
 //	OfGUI.setup(parameters);
 
-//	framerate.addListener(this, &ofApp::setFramerate);
-//	verticalSync.addListener(this, &ofApp::setVerticalSync);
+//	framerate.addListener(this, &ofApp_A::setFramerate);
+//	verticalSync.addListener(this, &ofApp_A::setVerticalSync);
 
 	videoFBO.allocate(400, 200);
 
 }
 
-void ofApp::setFramerate(int value)
+//--------------------------------------------------------------
+void ofApp_A::setFramerate(int value)
 {
 	getOfWindow()->setFrameRate(value);
 }
 
-void ofApp::setVerticalSync(bool value)
+//--------------------------------------------------------------
+void ofApp_A::setVerticalSync(bool value)
 {
 	getOfWindow()->setVerticalSync(value);
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp_A::update(){
 	ofLogVerbose() << "update";
 
 	videoFBO.begin();	//----- FBO begin
 //	ofSetColor(ofColor::ghostWhite);
 //	liveTexture.draw(0, 0);
 
+	ofPushStyle();
+	ofSetColor(ofColor::yellow, 50);
 	ofDrawBitmapStringHighlight("Hello FBOoo!", 50, 100);
+	ofPopStyle();
 
 	videoFBO.end();		//----- FBO end
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp_A::draw(){
 	ofLogVerbose() << "draw";
 
 	imgui.begin();
@@ -100,17 +107,18 @@ void ofApp::draw(){
 			size
 		);
 	}
+	ofPopStyle();
 
-
+	ofPushStyle();
     ofSetColor(ofColor::ghostWhite);
 	ofDrawBitmapStringHighlight("fps: " + ofToString(ofGetFrameRate(),0), 20, 20);
 	ofDrawBitmapStringHighlight("value from slider: " + ofToString(radius), 20, 40);
 	ofDrawBitmapString("value from keys: " + key_str, 20, 60);
 	key_str = "";
 
-	
 // 	ofSetColor(ofColor::black, 150);
 // 	ofRect(ofGetWindowWidth()/2- radius/2, ofGetWindowHeight()/2 - radius / 2, radius, radius);
+
 
 	ofSetColor(color, 100);
 	ofCircle(posX, posY, radius / 2);
@@ -120,67 +128,67 @@ void ofApp::draw(){
 //	OfGUI.draw();
 }
 
-//void ofApp::exit()
+//void ofApp_A::exit()
 //{
 //	ofLogVerbose() << "exit";
-//	QofApp::exit();// if you implement exit you need to call base class.
+//	QofApp_A::exit();// if you implement exit you need to call base class.
 //}
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(ofKeyEventArgs& key){
+void ofApp_A::keyPressed(ofKeyEventArgs& key){
 	key_str = key.key;
 	cout << key.key <<endl;
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(ofKeyEventArgs&  key){
+void ofApp_A::keyReleased(ofKeyEventArgs&  key){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
+void ofApp_A::mouseMoved(int x, int y){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
+void ofApp_A::mouseDragged(int x, int y, int button){
 	posX = x;
 	posY = y;
 }
 
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
+void ofApp_A::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
+void ofApp_A::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
+void ofApp_A::mouseEntered(int x, int y){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
+void ofApp_A::mouseExited(int x, int y){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
+void ofApp_A::windowResized(int w, int h){
 	posX.set("posX", posX, 0.0f, ofGetWindowWidth());
 	posY.set("posY", posY, 0.0f, ofGetWindowHeight());
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
+void ofApp_A::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){
+void ofApp_A::dragEvent(ofDragInfo dragInfo){
 
 }
 

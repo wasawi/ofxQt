@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\ofApp.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mainwindow.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
@@ -33,12 +27,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ofAppQtWindow.cpp">
       <Filter>addons\ofxQt</Filter>
@@ -91,22 +79,55 @@
     <ClCompile Include="..\src\QofApp.cpp">
       <Filter>addons\ofxQt</Filter>
     </ClCompile>
-    <ClCompile Include="src\myWidget_A.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_myWidget_A.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_myWidget_A.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\myWidget_B.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_myWidget_B.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_myWidget_B.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mainWindow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_mainWindow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_mainWindow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myWidget_A.cpp">
+      <Filter>src\A</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp_A.cpp">
+      <Filter>src\A</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myModel_A.cpp">
+      <Filter>src\A</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_myModel_A.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_myModel_A.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myWidget_B.cpp">
+      <Filter>src\B</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp_B.cpp">
+      <Filter>src\B</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myModel_B.cpp">
+      <Filter>src\B</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_myModel_B.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_myModel_B.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
@@ -159,33 +180,45 @@
     <Filter Include="addons\ofxImGuiParameter">
       <UniqueIdentifier>{feac6372-aa1b-49d5-964f-6c68477fe57a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\A">
+      <UniqueIdentifier>{1e0f73bb-2fe3-48df-b18b-b234260a8b97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\B">
+      <UniqueIdentifier>{64c42163-530f-4465-8a4c-17e0035c6b07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\mainwindow.h">
-      <Filter>src</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\mainwindow.ui">
-      <Filter>src</Filter>
-    </CustomBuild>
     <CustomBuild Include="..\src\QtGLWidget.h">
       <Filter>addons\ofxQt</Filter>
     </CustomBuild>
-    <CustomBuild Include="src\myWidget_A.h">
+    <CustomBuild Include="src\mainWindow.h">
       <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\mainWindow.ui">
+      <Filter>src</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myWidget_A.h">
+      <Filter>src\A</Filter>
     </CustomBuild>
     <CustomBuild Include="src\myWidget_A.ui">
-      <Filter>src</Filter>
+      <Filter>src\A</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myModel_A.h">
+      <Filter>src\A</Filter>
     </CustomBuild>
     <CustomBuild Include="src\myWidget_B.h">
-      <Filter>src</Filter>
+      <Filter>src\B</Filter>
     </CustomBuild>
     <CustomBuild Include="src\myWidget_B.ui">
+      <Filter>src\B</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myModel_B.h">
+      <Filter>src\B</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\data.h">
       <Filter>src</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -288,6 +321,15 @@
     </ClInclude>
     <ClInclude Include="..\..\ofxImGuiParameter\src\ofxImGuiWidgets.h">
       <Filter>addons\ofxImGuiParameter</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_mainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp_A.h">
+      <Filter>src\A</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp_B.h">
+      <Filter>src\B</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

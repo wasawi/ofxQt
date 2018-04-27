@@ -7,6 +7,8 @@
 // ofApp
 #include "myWidget_A.h"
 #include "myWidget_B.h"
+#include "myModel_A.h"
+#include "myModel_B.h"
 
 // Qt ui
 #include "ui_mainwindow.h"
@@ -33,19 +35,17 @@ public:
 
 public slots:
 
-void on_action_add_Widget_A_triggered() {
-	loadSubWindow(new myWidget_A(this));
-}
-
-void on_action_add_Widget_B_triggered() {
-	loadSubWindow(new myWidget_B(this));
-}
+void on_action_add_Widget_A_triggered();
+void on_action_add_Widget_B_triggered();
 
 
 private:
 	void newframe();
 	Ui::MainWindow *ui;
 	void loadSubWindow(QWidget* widget);
+
+	MyModel_A *myModel_A;
+	MyModel_B *myModel_B;
 
 };
 
