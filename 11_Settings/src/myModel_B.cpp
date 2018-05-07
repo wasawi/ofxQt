@@ -1,6 +1,7 @@
 
 #include "MyModel_B.h"
 #include <QDebug>
+#include <QTableView>
 
 MyModel_B::MyModel_B(QObject *parent)
     : QAbstractTableModel(parent)
@@ -58,7 +59,9 @@ bool MyModel_B::setData(const QModelIndex & index, const QVariant & value, int r
         //save value from editor to member m_gridData
 //        m_gridData[index.row()][index.column()] = value.toString();
         qDebug() << value;
-        myData.setData(index.row(),index.column(),value);
+		if (index.column() == 0) return false;
+
+		myData.setData(index.row(),index.column(),value);
 
         // automatically update views
         dataChanged(index, index);

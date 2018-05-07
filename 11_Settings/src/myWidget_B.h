@@ -29,6 +29,7 @@ public:
 	~MyWidget_B();
 
 	MyModel_B* myModel_B;
+	QTableView* tableView;
 
 	QHBoxLayout *layout;
 	shared_ptr<ofApp_B> ofAppPtr;
@@ -43,5 +44,7 @@ public slots:
 	void on_FPS_slider_sliderMoved(int value);
 	void on_VerticalSync_checkbox_stateChanged(int value);
 	void updateUI(ofEventArgs& event);
+	void dataChanged(const QModelIndex &topLeft, const QModelIndex   &bottomRight);
+	void adjustTableSize();
 };
  

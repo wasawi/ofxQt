@@ -12,11 +12,20 @@ MyWidget_B::MyWidget_B(
 
 	myModel_B = model_B;
 
-	QTableView* tableView = new QTableView(this);
+	tableView = new QTableView(this);
 	tableView->setModel(model_B);
+	adjustTableSize();
+
+// connect to the model's dataChanged event
+ 	connect(tableView->model(), SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+			this, SLOT(dataChanged(QModelIndex, QModelIndex)));
+
+// 	connect(tableView->model(), SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+// 		this, SLOT(dataChanged(QModelIndex, QModelIndex)));
 
 	SpinBoxDelegate *delegate = new SpinBoxDelegate(this);
 //	tableView->setItemDelegate(delegate);
+	tableView->setItemDelegateForColumn(1, delegate);
 
 	ui.frame->layout()->addWidget(tableView);
 
@@ -80,6 +89,27 @@ void MyWidget_B::updateUI(ofEventArgs& event)
 	// e.g. those changed by ImGui
 	ui.Size_slider->setValue(ofAppPtr->size);
 	ui.Angle_slider->setValue(ofAppPtr->angle);
+}
+
+void MyWidget_B::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight)
+{
+	adjustTableSize();
+}
+
+void MyWidget_B::adjustTableSize()
+{
+	tableView->resizeColumnToContents(0);
+	tableView->resizeColumnToContents(1);
+//	tableView->resizeColumnToContents(2);
+
+//	tableView->setColumnWidth(0, 100);
+	tableView->setColumnWidth(1, 200);
+	tableView->setMinimumHeight(30);
+
+	QRect rect = tableView->geometry();
+	rect.setWidth(2 + tableView->verticalHeader()->width() +
+		tableView->columnWidth(0) + tableView->columnWidth(1) + tableView->columnWidth(2));
+//	tableView->setGeometry(rect);
 }
 
 void MyWidget_B::changeEvent(QEvent *e)

@@ -70,35 +70,57 @@ SpinBoxDelegate::SpinBoxDelegate(QObject *parent)
 
 //! [1]
 QWidget *SpinBoxDelegate::createEditor(QWidget *parent,
-    const QStyleOptionViewItem &/* option */,
-    const QModelIndex &/* index */) const
+    const QStyleOptionViewItem & option,
+    const QModelIndex & index ) const
 {
 
-// 	QWidget *w = new QWidget(parent);
-// 	QGridLayout  *layout = new QGridLayout(w);
-// 
-// 	QSlider *editor1 = new QSlider(w);
+	QWidget* f = new QWidget(parent);
+	f->setAutoFillBackground(true);
+
+	QSlider *editor1 = new QSlider(f);
+	editor1->setOrientation(Qt::Orientation::Horizontal);
+	editor1->setMinimumHeight(20);
+	editor1->setMinimumWidth(100);
+	editor1->setMinimum(0);
+	editor1->setMaximum(100);
+	QSpinBox *editor2 = new QSpinBox(f);
+	editor2->setMinimumHeight(20);
+	editor2->setMinimumWidth(20);
+	editor2->setFrame(false);
+	editor2->setMinimum(0);
+	editor2->setMaximum(100);
+
+	connect(editor1, SIGNAL(valueChanged(int)), editor2, SLOT(setValue(int)));
+	connect(editor2, SIGNAL(valueChanged(int)), editor1, SLOT(setValue(int)));
+
+	QHBoxLayout *layout = new QHBoxLayout;
+	layout->addWidget(editor1);
+	layout->addWidget(editor2);
+	f->setLayout(layout);
+
+	return f;
+
+// 	QFrame  *f = new QFrame(parent);
+// 	QSlider *editor1 = new QSlider(f);
+// 	editor1->setOrientation(Qt::Orientation::Horizontal);
+// 	editor1->setMinimumWidth(100);
 // 	editor1->setMinimum(0);
 // 	editor1->setMaximum(100);
+//	QSpinBox *editor2 = new QSpinBox(f);
+// 	editor1->setMinimumWidth(20);
+// 	editor2->setFrame(false);
+//	editor2->setMinimum(0);
+//	editor2->setMaximum(100);
+// 	f->adjustSize();
+//	return f;
 
-//     QSpinBox *editor2 = new QSpinBox(w);
-//     editor2->setFrame(false);
-//     editor2->setMinimum(0);
-//     editor2->setMaximum(100);
+// 	QSpinBox *editor = new QSpinBox(parent);
+// 	editor->setFrame(false);
+// 	editor->setMinimum(0);
+// 	editor->setMaximum(100);
 
-// 	layout->addWidget(editor1);
-// 	layout->addWidget(editor2);
-// 
-// 	w->setLayout(layout);
-
-//     return w;
-
-	QSpinBox *editor = new QSpinBox(parent);
-	editor->setFrame(false);
-	editor->setMinimum(0);
-	editor->setMaximum(100);
-
-	return editor;
+//	
+//	return editor;
 
 }
 //! [1]
@@ -109,8 +131,29 @@ void SpinBoxDelegate::setEditorData(QWidget *editor,
 {
     int value = index.model()->data(index, Qt::EditRole).toInt();
 
-    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-    spinBox->setValue(value);
+	for (auto widget : editor->findChildren<QSlider*>()) {
+		widget->setValue(value);
+	}
+	for (auto widget : editor->findChildren<QSpinBox*>()) {
+		widget->setValue(value);
+	}
+
+//	QFrame *frame = static_cast<QFrame*>(editor);
+//	QLayout* layout = editor->layout();
+// 	QObjectList theList = editor->children();
+// 	QListIterator<QObject *> i(theList);
+// 	while (i.hasNext())
+// 	{
+// 		QSlider* slider = qobject_cast<QSlider*>(i.next());
+// 		if (slider != Q_NULLPTR) {
+// 			slider->setValue(value);
+// 		}
+// 
+// 		QSpinBox* spinbox = qobject_cast<QSpinBox*>(i.next());
+// 		if (spinbox != Q_NULLPTR) {
+// 			spinbox->setValue(value);
+// 		}
+// 	}
 
 // 	QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
 // 	spinBox->setValue(value);
@@ -122,11 +165,37 @@ void SpinBoxDelegate::setEditorData(QWidget *editor,
 void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
                                    const QModelIndex &index) const
 {
-    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
-    spinBox->interpretText();
-    int value = spinBox->value();
+	int value = index.model()->data(index, Qt::EditRole).toInt();
+	for (auto widget : editor->findChildren<QSlider*>()) {
+		value = widget->value();
+	}
+	for (auto widget : editor->findChildren<QSpinBox*>()) {
+		value = widget->value();
+	}
+	model->setData(index, value, Qt::EditRole);
 
-    model->setData(index, value, Qt::EditRole);
+	//	QFrame *frame = static_cast<QFrame*>(editor);
+	// 	QLayout* layout = editor->layout();
+	// 	QObjectList theList = layout->children();
+	// 	QListIterator<QObject *> i(theList);
+	// 	while (i.hasNext())
+	// 	{
+	// 		QSlider* slider = qobject_cast<QSlider*>(i.next());
+	// 		if (slider != Q_NULLPTR) {
+	// 			value = slider->value();
+	// 		}
+	// 
+	// 		QSpinBox* spinbox = qobject_cast<QSpinBox*>(i.next());
+	// 		if (spinbox != Q_NULLPTR) {
+	// 			value = spinbox->value();
+	// 		}
+	// 	}
+
+//     QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+//     spinBox->interpretText();
+//     int value = spinBox->value();
+// 
+//     model->setData(index, value, Qt::EditRole);
 }
 //! [3]
 
@@ -134,6 +203,19 @@ void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
 void SpinBoxDelegate::updateEditorGeometry(QWidget *editor,
     const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
 {
+
     editor->setGeometry(option.rect);
+	editor->adjustSize();
+
 }
+
+QSize SpinBoxDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+{
+//	auto hint = QStyledItemDelegate::sizeHint(option, index);
+//	auto hint = QSize(200, 25);
+	auto hint = option.rect.size();
+
+	return hint;
+}
+
 //! [4]
