@@ -26,16 +26,15 @@ void ofApp_B::setup()
 
 	key_str = "";
 
-	parameters.setName("parameters");
-	parameters.add(radius.set("radius", 50, 1, 100));
-	parameters.add(angle.set("angle", 50, 0, 360));
+	model->settings.add(size.set("size", 50, 1, 100));
+	model->settings.add(angle.set("angle", 50, 0, 360));
 
-	parameters.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
-	parameters.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
+	model->settings.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
+	model->settings.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
 
-	parameters.add(color.set("color", ofColor::pink, 0, 255));
-	parameters.add(framerate.set("framerate", 60, 0, 120));
-	parameters.add(verticalSync.set("verticalSync", true));
+	model->settings.add(color.set("color", ofColor::pink, 0, 255));
+	model->settings.add(framerate.set("framerate", 60, 0, 120));
+	model->settings.add(verticalSync.set("verticalSync", true));
 //	OfGUI.setup(parameters);
 
 //	framerate.addListener(this, &ofApp_B::setFramerate);
@@ -76,7 +75,7 @@ void ofApp_B::draw(){
 
 	imgui.begin();
 	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
-	radius.draw();
+	size.draw();
 	angle.draw();
 	posX.draw();
 	posY.draw();
@@ -94,15 +93,15 @@ void ofApp_B::draw(){
 	ofPushStyle();
 	ofSetColor(ofColor::white, 50);
 	int margin = 10;
-	int size = 10;
+	int labelH = 10;
 	for (int i = 0; i < 100; i++) {
 		ofRect(
 //			ofRandom(window->getWidth()),
 //			ofRandom(window->getHeight()),
-			ofRandom(ofGetWindowWidth() - margin * 2 - size) + margin,
-			ofRandom(ofGetWindowHeight() - margin * 2 - size) + margin,
-			size,
-			size
+			ofRandom(ofGetWindowWidth() - margin * 2 - labelH) + margin,
+			ofRandom(ofGetWindowHeight() - margin * 2 - labelH) + margin,
+			labelH,
+			labelH
 		);
 	}
 	ofPopStyle();
@@ -110,7 +109,7 @@ void ofApp_B::draw(){
 	ofPushStyle();
     ofSetColor(ofColor::ghostWhite);
 	ofDrawBitmapStringHighlight("fps: " + ofToString(ofGetFrameRate(),0), 20, 20);
-	ofDrawBitmapStringHighlight("value from slider: " + ofToString(radius), 20, 40);
+	ofDrawBitmapStringHighlight("value from slider: " + ofToString(size), 20, 40);
 	ofDrawBitmapString("value from keys: " + key_str, 20, 60);
 	key_str = "";
 
@@ -123,7 +122,7 @@ void ofApp_B::draw(){
 
 		ofTranslate(posX, posY);
 		ofRotateDeg(angle);
-		ofRect(0, 0, radius, radius / 2);
+		ofRect(0, 0, size, size / 2);
 
 	ofPopView();
 	ofPopStyle();

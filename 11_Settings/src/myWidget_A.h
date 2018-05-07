@@ -7,6 +7,7 @@
 #include "ofApp_A.h"
 #include "myModel_A.h"
 #include "ui_myWidget_A.h"
+#include "stardelegate.h"
 
 // include Qt always at the end or face glew error
 #include <QWidget>
@@ -28,7 +29,6 @@ public:
 	~MyWidget_A();
 
 	MyModel_A* myModel_A;
-	QTableView* tableView;
 
 	QHBoxLayout *layout;
 	shared_ptr<ofApp_A> ofAppPtr;

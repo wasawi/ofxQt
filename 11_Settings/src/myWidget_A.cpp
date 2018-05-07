@@ -11,13 +11,18 @@ MyWidget_A::MyWidget_A(
 //	ofLogToConsole();
 
 	myModel_A = model_A;
+
 	QTableView* tableView = new QTableView(this);
 	tableView->setModel(model_A);
-	ui.frame->layout()->addWidget(tableView);
 
+	StarDelegate *delegate = new StarDelegate(this);
+	tableView->setItemDelegate(delegate);
+
+	ui.frame->layout()->addWidget(tableView);
 
 	// create an ofApp instance
 	ofAppPtr = make_shared<ofApp_A>(parent);
+	ofAppPtr->setModel(model_A);
 	ofAppPtr->startRender();
 	// startRender() is same as:
 	//ofRunApp(ofAppPtr->getOfWindow(), ofAppPtr);

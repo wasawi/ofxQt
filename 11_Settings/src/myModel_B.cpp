@@ -3,20 +3,24 @@
 #include <QDebug>
 
 MyModel_B::MyModel_B(QObject *parent)
-    :QAbstractTableModel(parent)
+    : QAbstractTableModel(parent)
 {
+	setModuleName("Model_B");
 
-    // setHeaderData(0, Qt::Horizontal, tr("Title"));
+//	ofParameter<bool> autoloadIRG;
+//	settings.add(autoloadIRG.set("autoloadIRG", true));
+
+	// setHeaderData(0, Qt::Horizontal, tr("Title"));
     // setHeaderData(1, Qt::Horizontal, tr("Genre"));
     // setHeaderData(2, Qt::Horizontal, tr("Artist"));
     // setHeaderData(3, Qt::Horizontal, tr("Rating"));
 
 }
-//-----------------------------------------------------------------
-MyModel_B::~MyModel_B()
-{
-    qDebug() << "Ctor";
-}
+////-----------------------------------------------------------------
+//MyModel_B::~MyModel_B()
+//{
+//    qDebug() << "Ctor";
+//}
 
 //-----------------------------------------------------------------
 int MyModel_B::rowCount(const QModelIndex & /*parent*/) const

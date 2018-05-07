@@ -130,6 +130,39 @@
     <ClCompile Include="GeneratedFiles\Release\moc_myModel_B.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_stareditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_stareditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_stardelegate.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_stardelegate.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stardelegate.cpp">
+      <Filter>src\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stareditor.cpp">
+      <Filter>src\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\starrating.cpp">
+      <Filter>src\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\myModelSettings.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spinboxdelegate.cpp">
+      <Filter>src\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_spinboxdelegate.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_spinboxdelegate.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -186,6 +219,9 @@
     <Filter Include="src\B">
       <UniqueIdentifier>{64c42163-530f-4465-8a4c-17e0035c6b07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\delegates">
+      <UniqueIdentifier>{87ae3bda-f761-49b5-bede-afac3dd59afe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
@@ -218,8 +254,14 @@
     <CustomBuild Include="src\myModel_B.h">
       <Filter>src\B</Filter>
     </CustomBuild>
-    <CustomBuild Include="src\data.h">
-      <Filter>src</Filter>
+    <CustomBuild Include="src\stardelegate.h">
+      <Filter>src\delegates</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\stareditor.h">
+      <Filter>src\delegates</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\spinboxdelegate.h">
+      <Filter>src\delegates</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +371,18 @@
       <Filter>src\A</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp_B.h">
+      <Filter>src\B</Filter>
+    </ClInclude>
+    <ClInclude Include="src\starrating.h">
+      <Filter>src\delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\myModelSettings.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data_A.h">
+      <Filter>src\A</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data_B.h">
       <Filter>src\B</Filter>
     </ClInclude>
   </ItemGroup>

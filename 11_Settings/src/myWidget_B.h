@@ -6,7 +6,8 @@
 
 #include "ofApp_B.h"
 #include "myModel_B.h"
-#include "ui_MyWidget_B.h"
+#include "ui_myWidget_B.h"
+#include "spinboxdelegate.h"
 
 // include Qt always at the end or face glew error
 #include <QWidget>
@@ -16,7 +17,8 @@
 #include <QThread>
 #include <QTableView>
 
-class MyWidget_B : public QWidget{
+class MyWidget_B : public QWidget
+{
 	Q_OBJECT
 
 public:
@@ -27,7 +29,6 @@ public:
 	~MyWidget_B();
 
 	MyModel_B* myModel_B;
-	QTableView* tableView;
 
 	QHBoxLayout *layout;
 	shared_ptr<ofApp_B> ofAppPtr;

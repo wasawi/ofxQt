@@ -11,12 +11,18 @@ MyWidget_B::MyWidget_B(
 //	ofLogToConsole();
 
 	myModel_B = model_B;
+
 	QTableView* tableView = new QTableView(this);
 	tableView->setModel(model_B);
+
+	SpinBoxDelegate *delegate = new SpinBoxDelegate(this);
+//	tableView->setItemDelegate(delegate);
+
 	ui.frame->layout()->addWidget(tableView);
 
 	// create an ofApp instance
 	ofAppPtr = make_shared<ofApp_B>(parent);
+	ofAppPtr->setModel(model_B);
 	ofAppPtr->startRender();
 	// startRender() is same as:
 	//ofRunApp(ofAppPtr->getOfWindow(), ofAppPtr);
@@ -51,7 +57,7 @@ MyWidget_B::~MyWidget_B()
 
 void MyWidget_B::on_Size_slider_sliderMoved(int value) 
 {
-	ofAppPtr->radius.set(value);
+	ofAppPtr->size.set(value);
 }
 void MyWidget_B::on_Angle_slider_sliderMoved(int value) 
 {
@@ -72,7 +78,7 @@ void MyWidget_B::updateUI(ofEventArgs& event)
 {
 	// we need to add here all values that are changed on draw
 	// e.g. those changed by ImGui
-	ui.Size_slider->setValue(ofAppPtr->radius);
+	ui.Size_slider->setValue(ofAppPtr->size);
 	ui.Angle_slider->setValue(ofAppPtr->angle);
 }
 

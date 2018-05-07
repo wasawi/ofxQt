@@ -5,6 +5,7 @@
 #include "imguiTheme.h"
 #include "ofxImGuiWidgets.h"
 
+#include "MyModel_A.h"
 #include "QofApp.h"
 
 namespace Ui {
@@ -35,7 +36,7 @@ public:
 		
 		string key_str;
 
-		ofParameterGroup parameters;
+//		ofParameterGroup parameters;
 		SliderFloat radius;
 		SliderFloat posX;
 		SliderFloat posY;
@@ -51,4 +52,9 @@ public:
 
 		ofTexture		liveTexture;
 		ofFbo			videoFBO;
+
+		void setModel(MyModel_A* modelA) {
+			model = modelA;
+		};
+		MyModel_A* model;
 };
