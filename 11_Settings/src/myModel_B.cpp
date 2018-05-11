@@ -6,33 +6,34 @@
 MyModel_B::MyModel_B(QObject *parent)
     : QAbstractTableModel(parent)
 {
+	qDebug() << "Ctor";
 	setModuleName("Model_B");
 
-//	ofParameter<bool> autoloadIRG;
-//	settings.add(autoloadIRG.set("autoloadIRG", true));
+	myData.paramGroup.add(size.set("size", 50, 1, 100));
+	myData.paramGroup.add(angle.set("angle", 50, 0, 360));
+	myData.paramGroup.add(posX.set("posX", 0.0f, 0.0f, 100));
+	myData.paramGroup.add(posY.set("posY", 0.0f, 0.0f, 100));
 
-	// setHeaderData(0, Qt::Horizontal, tr("Title"));
-    // setHeaderData(1, Qt::Horizontal, tr("Genre"));
-    // setHeaderData(2, Qt::Horizontal, tr("Artist"));
-    // setHeaderData(3, Qt::Horizontal, tr("Rating"));
+//	loadSettings(myData.paramGroup);
 
 }
-////-----------------------------------------------------------------
-//MyModel_B::~MyModel_B()
-//{
-//    qDebug() << "Ctor";
-//}
+//-----------------------------------------------------------------
+MyModel_B::~MyModel_B()
+{
+	qDebug() << "Dtor";
+	saveSettings(myData.paramGroup);
+}
 
 //-----------------------------------------------------------------
 int MyModel_B::rowCount(const QModelIndex & /*parent*/) const
 {
-    return myData.ROWS;
+    return myData.getRowCount();
 }
 
 //-----------------------------------------------------------------
 int MyModel_B::columnCount(const QModelIndex & /*parent*/) const
 {
-    return myData.COLS;
+    return myData.getColumnCount();
 }
 
 //-----------------------------------------------------------------
@@ -73,5 +74,10 @@ bool MyModel_B::setData(const QModelIndex & index, const QVariant & value, int r
 Qt::ItemFlags MyModel_B::flags(const QModelIndex &index) const
 {
     return Qt::ItemIsEditable | QAbstractTableModel::flags(index);
+}
+
+ofAbstractParameter & MyModel_B::getOfParameter(const QModelIndex &index)
+{
+	return myData.getOfParameter(index.row(), index.column());
 }
 

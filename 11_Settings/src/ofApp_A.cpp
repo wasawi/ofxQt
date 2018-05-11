@@ -38,14 +38,13 @@ void ofApp_A::setup()
 // 	parameters.add(verticalSync.set("verticalSync", true));
 //	OfGUI.setup(parameters);
 
-
-	model->settings.add(radius.set("radius", 50, 1, 100));
-	model->settings.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
-	model->settings.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
-
-	model->settings.add(color.set("color", ofColor::yellow, 0, 255));
-	model->settings.add(framerate.set("framerate", 60, 0, 120));
-	model->settings.add(verticalSync.set("verticalSync", true));
+// 	model->settings.add(radius.set("radius", 50, 1, 100));
+// 	model->settings.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
+// 	model->settings.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
+// 
+// 	model->settings.add(color.set("color", ofColor::yellow, 0, 255));
+// 	model->settings.add(framerate.set("framerate", 60, 0, 120));
+// 	model->settings.add(verticalSync.set("verticalSync", true));
 
 
 

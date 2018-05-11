@@ -51,6 +51,7 @@
 #ifndef DELEGATE_H
 #define DELEGATE_H
 
+//#include "MyModel_B.h"
 #include <QStyledItemDelegate>
 
 //! [0]
@@ -73,8 +74,10 @@ public:
 
 	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
-private:
+//private:
 
+public slots :
+	void onSpinboxValueChanged(int);
 };
 //! [0]
 

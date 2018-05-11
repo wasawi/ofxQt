@@ -2,17 +2,14 @@
 
 MyModelSettings::MyModelSettings(){
 
-	loadSettings();
 }
 
 MyModelSettings::~MyModelSettings()
 {
-	saveSettings();
 }
 
 //--------------------------------------------------------------
 void MyModelSettings::setModuleName(string _filename) {
-	settings.setName(_filename);
 	moduleName = _filename;
 	ofLogVerbose() << moduleName;
 	path = "settings/" + moduleName + ".json";
@@ -22,10 +19,10 @@ void MyModelSettings::setModuleName(string _filename) {
 	// And this replaces the text
 	if (f != string::npos) path.replace(f, std::string(" ").length(), "_");
 	ofLogVerbose() << path;
-	string settingsAbsolutepath = ofFilePath().getAbsolutePath(path);
+//	string settingsAbsolutepath = ofFilePath().getAbsolutePath(path);
 }
 //--------------------------------------------------------------
-bool MyModelSettings::loadSettings() {
+bool MyModelSettings::loadSettings(ofParameterGroup& settings){
 	ofLogVerbose() << "Loading JSON";
 	ofJson json;
 	bool success = false;
@@ -45,7 +42,8 @@ bool MyModelSettings::loadSettings() {
 }
 
 //--------------------------------------------------------------
-bool MyModelSettings::saveSettings() {
+bool MyModelSettings::saveSettings(ofParameterGroup& settings) {
+	settings.setName(moduleName);
 	ofLogVerbose() << "Saving JSON";
 	ofJson json;
 	bool success = false;

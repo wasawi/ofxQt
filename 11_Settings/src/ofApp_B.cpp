@@ -26,16 +26,9 @@ void ofApp_B::setup()
 
 	key_str = "";
 
-	model->settings.add(size.set("size", 50, 1, 100));
-	model->settings.add(angle.set("angle", 50, 0, 360));
-
-	model->settings.add(posX.set("posX", 0.0f, 0.0f, ofGetWindowWidth()));
-	model->settings.add(posY.set("posY", 0.0f, 0.0f, ofGetWindowHeight()));
-
-	model->settings.add(color.set("color", ofColor::pink, 0, 255));
-	model->settings.add(framerate.set("framerate", 60, 0, 120));
-	model->settings.add(verticalSync.set("verticalSync", true));
-//	OfGUI.setup(parameters);
+//	model->myData.paramGroup.add(color.set("color", ofColor::pink, 0, 255));
+//	model->myData.paramGroup.add(framerate.set("framerate", 60, 0, 120));
+//	model->myData.paramGroup.add(verticalSync.set("verticalSync", true));
 
 //	framerate.addListener(this, &ofApp_B::setFramerate);
 //	verticalSync.addListener(this, &ofApp_B::setVerticalSync);
@@ -75,10 +68,10 @@ void ofApp_B::draw(){
 
 	imgui.begin();
 	ImGui::Text("Hello ImGui!", ofVec2f(0, 0));
-	size.draw();
-	angle.draw();
-	posX.draw();
-	posY.draw();
+	model->size.draw();
+	model->angle.draw();
+	model->posX.draw();
+	model->posY.draw();
 	imgui.end();
 
 // 	cout << "window w " << getOfWindow()->getWidth() << endl;
@@ -109,7 +102,7 @@ void ofApp_B::draw(){
 	ofPushStyle();
     ofSetColor(ofColor::ghostWhite);
 	ofDrawBitmapStringHighlight("fps: " + ofToString(ofGetFrameRate(),0), 20, 20);
-	ofDrawBitmapStringHighlight("value from slider: " + ofToString(size), 20, 40);
+	ofDrawBitmapStringHighlight("value from slider: " + ofToString(model->size), 20, 40);
 	ofDrawBitmapString("value from keys: " + key_str, 20, 60);
 	key_str = "";
 
@@ -120,9 +113,9 @@ void ofApp_B::draw(){
 	ofPushView();
 		ofSetColor(color, 200);
 
-		ofTranslate(posX, posY);
-		ofRotateDeg(angle);
-		ofRect(0, 0, size, size / 2);
+		ofTranslate(model->posX, model->posY);
+		ofRotateDeg(model->angle);
+		ofRect(0, 0, model->size, model->size / 2);
 
 	ofPopView();
 	ofPopStyle();
@@ -155,8 +148,16 @@ void ofApp_B::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp_B::mouseDragged(int x, int y, int button){
-	posX = x;
-	posY = y;
+	model->posX = x;
+	model->posY = y;
+
+
+	guiEvent.notify(model->size);
+	guiEvent.notify(model->angle);
+
+	guiEvent.notify(model->posX);
+	guiEvent.notify(model->posY);
+
 }
 
 //--------------------------------------------------------------
@@ -181,8 +182,8 @@ void ofApp_B::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp_B::windowResized(int w, int h){
-	posX.set("posX", posX, 0.0f, ofGetWindowWidth());
-	posY.set("posY", posY, 0.0f, ofGetWindowHeight());
+	model->posX.set("posX", model->posX, 0.0f, ofGetWindowWidth());
+	model->posY.set("posY", model->posY, 0.0f, ofGetWindowHeight());
 }
 
 //--------------------------------------------------------------

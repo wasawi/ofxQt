@@ -74,31 +74,41 @@ QWidget *SpinBoxDelegate::createEditor(QWidget *parent,
     const QModelIndex & index ) const
 {
 
-	QWidget* f = new QWidget(parent);
-	f->setAutoFillBackground(true);
+	QWidget* editor = new QWidget(parent);
+	editor->setAutoFillBackground(true);
 
-	QSlider *editor1 = new QSlider(f);
-	editor1->setOrientation(Qt::Orientation::Horizontal);
-	editor1->setMinimumHeight(20);
-	editor1->setMinimumWidth(100);
-	editor1->setMinimum(0);
-	editor1->setMaximum(100);
-	QSpinBox *editor2 = new QSpinBox(f);
-	editor2->setMinimumHeight(20);
-	editor2->setMinimumWidth(20);
-	editor2->setFrame(false);
-	editor2->setMinimum(0);
-	editor2->setMaximum(100);
+	QSlider *slider = new QSlider(editor);
+	slider->setOrientation(Qt::Orientation::Horizontal);
+	slider->setMinimumHeight(20);
+	slider->setMinimumWidth(100);
+	slider->setMinimum(0);
+	slider->setMaximum(100);
+	// Todo: 
+	// find a way to get properties from QModelIndex
+	// so that we can set maximum ranges...
+	//	MyModel_B* mb = static_cast<MyModel_B*>(index);
+		
 
-	connect(editor1, SIGNAL(valueChanged(int)), editor2, SLOT(setValue(int)));
-	connect(editor2, SIGNAL(valueChanged(int)), editor1, SLOT(setValue(int)));
+	QSpinBox *spinbox = new QSpinBox(editor);
+	spinbox->setMinimumHeight(20);
+	spinbox->setMinimumWidth(20);
+	spinbox->setFrame(false);
+	spinbox->setMinimum(0);
+	spinbox->setMaximum(100);
+
+	connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(setValue(int)));
+	connect(spinbox, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
+//	connect(editor1, SIGNAL(valueChanged(int)), this, SIGNAL(setModelData(f, parent, index)));
+//	connect(editor2, SIGNAL(valueChanged()), this, SIGNAL(commitData(f)));
+	connect(spinbox, SIGNAL(valueChanged(int)), this, SLOT(onSpinboxValueChanged(int)));
+//	connect(spinbox, SIGNAL(valueChanged()), this, SLOT(onSpinboxValueChanged(editor)));
 
 	QHBoxLayout *layout = new QHBoxLayout;
-	layout->addWidget(editor1);
-	layout->addWidget(editor2);
-	f->setLayout(layout);
+	layout->addWidget(slider);
+	layout->addWidget(spinbox);
+	editor->setLayout(layout);
 
-	return f;
+	return editor;
 
 // 	QFrame  *f = new QFrame(parent);
 // 	QSlider *editor1 = new QSlider(f);
@@ -173,7 +183,7 @@ void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
 		value = widget->value();
 	}
 	model->setData(index, value, Qt::EditRole);
-
+//	editor->update();
 	//	QFrame *frame = static_cast<QFrame*>(editor);
 	// 	QLayout* layout = editor->layout();
 	// 	QObjectList theList = layout->children();
@@ -203,10 +213,8 @@ void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
 void SpinBoxDelegate::updateEditorGeometry(QWidget *editor,
     const QStyleOptionViewItem &option, const QModelIndex &/* index */) const
 {
-
     editor->setGeometry(option.rect);
 	editor->adjustSize();
-
 }
 
 QSize SpinBoxDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
@@ -216,6 +224,17 @@ QSize SpinBoxDelegate::sizeHint(const QStyleOptionViewItem& option, const QModel
 	auto hint = option.rect.size();
 
 	return hint;
+}
+
+void SpinBoxDelegate::onSpinboxValueChanged(int)
+{
+	QSpinBox* sb = static_cast<QSpinBox*>(sender());
+	if (sb) {
+		QWidget* w = static_cast<QWidget*>(sb->parent());
+		if (w) {
+			emit commitData(w);
+		}
+	}
 }
 
 //! [4]

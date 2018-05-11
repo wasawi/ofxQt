@@ -1,31 +1,36 @@
 #pragma once
 
-#include "starrating.h"
+#include "ofParameterGroup.h"
 #include <QVariant>
 
 class Data_B {
 
-	struct DataStruct {
-		QString label;
-		QVariant value;
-	};
+// 	Data_B() {
+// 	}
+
+// 	struct DataStruct {
+// 		QString label;
+// 		QVariant value;
+// 	};
 
 public:
-	int COLS = 2;
-	int ROWS = 5;
+	ofParameterGroup paramGroup;
 
-	Data_B() {
-		myData[0] = { "width", 50 };
-		myData[1] = { "height", 20 };
-		myData[2] = { "xpos", 30 };
-		myData[3] = { "ypos", 50 };
-		myData[4] = { "angle", 20 };
+	int getColumnCount() const {
+		return 2;
 	}
+
+	int getRowCount() const {
+		return paramGroup.size();
+	}
+
 
 	QVariant getData(int row, int col) const {
 		switch (col) {
-		case 0: return QVariant::fromValue(myData[row].label);
-		case 1: return QVariant::fromValue(myData[row].value);
+		case 0: 
+			return QVariant::fromValue(QString(paramGroup[row].getName().c_str()));
+		case 1: 
+			return QVariant::fromValue(paramGroup[row].cast<float>().get());
 		default:
 			return QString("");
 		}
@@ -33,13 +38,25 @@ public:
 
 	void setData(int row, int col, const QVariant & value) {
 		switch (col) {
-		case 0: myData[row].label = value.toString();
+		case 0: 
+			paramGroup[row].setName(value.toString().toStdString());
 			break;
-		case 1: myData[row].value = value.toFloat();
+		case 1: 
+			paramGroup[row].cast<float>() = value.toFloat();
 			break;
 		default:
 			break;
 		}
 	}
-	DataStruct myData[5];
+
+	ofAbstractParameter & getOfParameter(int row, int col) {
+		switch (col) {
+		case 0: 
+			return paramGroup[row];
+		case 1: 
+			return paramGroup[row];
+//		default:
+//			return QString("");
+		}
+	};
 };

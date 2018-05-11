@@ -11,10 +11,10 @@ public:
 	void setModuleName(string filename);
 	string getModuleName() { return moduleName; }
 
-	bool				loadSettings();
-	bool				saveSettings();
+	bool				loadSettings(ofParameterGroup& settings);
+	bool				saveSettings(ofParameterGroup& settings);
 
-	ofParameterGroup	settings;
+//	ofParameterGroup	settings;
 
 private:
 	string				moduleName;

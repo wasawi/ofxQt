@@ -37,10 +37,7 @@ public:
 		string key_str;
 
 //		ofParameterGroup parameters;
-		SliderFloat size;
-		SliderFloat angle;
-		SliderFloat posX;
-		SliderFloat posY;
+
 		ofParameter<ofColor> color;
 		ofParameter<float> framerate;
 		ofParameter<bool> verticalSync;
@@ -58,4 +55,6 @@ public:
 			model = modelB;
 		};
 		MyModel_B* model;
+
+		ofEvent<ofAbstractParameter &> guiEvent;
 };

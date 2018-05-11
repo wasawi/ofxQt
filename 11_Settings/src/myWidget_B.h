@@ -35,6 +35,8 @@ public:
 	shared_ptr<ofApp_B> ofAppPtr;
 	void changeEvent(QEvent *e);
 
+	void guiEvent(ofAbstractParameter &e);
+
 private:
 	Ui::MyWidget_B ui;
 
