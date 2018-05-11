@@ -5,7 +5,7 @@
 MyModel_A::MyModel_A(QObject *parent)
     :QAbstractTableModel(parent)
 {
-	setModuleName("Model_A");
+//	setModuleName("Model_A" , myData.paramGroup);
 
     // setHeaderData(0, Qt::Horizontal, tr("Title"));
     // setHeaderData(1, Qt::Horizontal, tr("Genre"));

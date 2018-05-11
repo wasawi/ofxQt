@@ -7,14 +7,14 @@ MyModel_B::MyModel_B(QObject *parent)
     : QAbstractTableModel(parent)
 {
 	qDebug() << "Ctor";
-	setModuleName("Model_B");
+	setModuleName("Model_B", myData.paramGroup);
 
 	myData.paramGroup.add(size.set("size", 50, 1, 100));
 	myData.paramGroup.add(angle.set("angle", 50, 0, 360));
 	myData.paramGroup.add(posX.set("posX", 0.0f, 0.0f, 100));
 	myData.paramGroup.add(posY.set("posY", 0.0f, 0.0f, 100));
 
-//	loadSettings(myData.paramGroup);
+	loadSettings(myData.paramGroup);
 
 }
 //-----------------------------------------------------------------

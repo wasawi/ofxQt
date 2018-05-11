@@ -9,7 +9,8 @@ MyModelSettings::~MyModelSettings()
 }
 
 //--------------------------------------------------------------
-void MyModelSettings::setModuleName(string _filename) {
+void MyModelSettings::setModuleName(string _filename, ofParameterGroup& settings) {
+	settings.setName(_filename);
 	moduleName = _filename;
 	ofLogVerbose() << moduleName;
 	path = "settings/" + moduleName + ".json";
