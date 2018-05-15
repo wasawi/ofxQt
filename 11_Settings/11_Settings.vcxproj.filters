@@ -163,6 +163,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_spinboxdelegate.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_myWidget_autoselect.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_myWidget_autoselect.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -261,6 +267,9 @@
       <Filter>src\delegates</Filter>
     </CustomBuild>
     <CustomBuild Include="src\spinboxdelegate.h">
+      <Filter>src\delegates</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\myWidget_autoselect.h">
       <Filter>src\delegates</Filter>
     </CustomBuild>
   </ItemGroup>
