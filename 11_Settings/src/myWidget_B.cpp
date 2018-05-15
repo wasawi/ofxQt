@@ -16,6 +16,19 @@ MyWidget_B::MyWidget_B(
 	tableView->setModel(model_B);
 	adjustTableSize();
 
+	// add a QSlider through a QDataWidgetMapper
+	QLabel* sliderLabel = new QLabel(tr("Size:"), this);
+	QSlider *mappedSlider = new QSlider(this);
+	mappedSlider->setOrientation(Qt::Orientation::Horizontal);
+	mappedSlider->setMinimumHeight(20);
+	mappedSlider->setMinimumWidth(100);
+	connect(mappedSlider, SIGNAL(valueChanged(int)), this, SLOT(on_Size_slider_sliderMoved(int)));
+
+	QDataWidgetMapper *mapper = new QDataWidgetMapper(this);
+	mapper->setModel(model_B);
+	mapper->addMapping(mappedSlider, 1);
+	mapper->toFirst();
+
 // connect to the model's dataChanged event
  	connect(tableView->model(), SIGNAL(dataChanged(QModelIndex, QModelIndex)),
 			this, SLOT(dataChanged(QModelIndex, QModelIndex)));
@@ -24,6 +37,8 @@ MyWidget_B::MyWidget_B(
 	tableView->setItemDelegateForColumn(1, delegate);
 
 	ui.frame->layout()->addWidget(tableView);
+	ui.frame->layout()->addWidget(sliderLabel);
+	ui.frame->layout()->addWidget(mappedSlider);
 
 	// create an ofApp instance
 	ofAppPtr = make_shared<ofApp_B>(parent);
@@ -96,13 +111,15 @@ void MyWidget_B::dataChanged(const QModelIndex &topLeft, const QModelIndex &bott
 
 void MyWidget_B::adjustTableSize()
 {
+
+//	tableView->resizeRowsToContents();
+
 	tableView->resizeColumnToContents(0);
 	tableView->resizeColumnToContents(1);
 //	tableView->resizeColumnToContents(2);
 
 //	tableView->setColumnWidth(0, 100);
 	tableView->setColumnWidth(1, 200);
-	tableView->setMinimumHeight(30);
 
 	QRect rect = tableView->geometry();
 	rect.setWidth(2 + tableView->verticalHeader()->width() +

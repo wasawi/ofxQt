@@ -16,6 +16,7 @@
 #include <QTimer>
 #include <QThread>
 #include <QTableView>
+#include <QDataWidgetMapper>
 
 class MyWidget_B : public QWidget
 {
@@ -30,6 +31,8 @@ public:
 
 	MyModel_B* myModel_B;
 	QTableView* tableView;
+
+	QSlider* mappedSlider;
 
 	QHBoxLayout *layout;
 	shared_ptr<ofApp_B> ofAppPtr;
