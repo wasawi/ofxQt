@@ -105,7 +105,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Size</string>
+           <string>Size (bad approach, does not update on multiple views)</string>
           </property>
          </widget>
         </item>

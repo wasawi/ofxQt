@@ -49,6 +49,9 @@ QVariant MyModel_B::data(const QModelIndex &index, int role) const
     if (role == Qt::EditRole){
         return myData.getData(index.row(),index.column());
     }
+	if (role == MyRoles::maxRange) {
+		return myData.getMax(index.row());
+	}
     return QVariant();
 }
 

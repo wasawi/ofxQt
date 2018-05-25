@@ -7,6 +7,7 @@
 #include <QLayout>
 
 #include "MyWidget_autoselect.h"
+#include "data_B.h"
 
 // class Autoselect_filter : public QObject
 // {

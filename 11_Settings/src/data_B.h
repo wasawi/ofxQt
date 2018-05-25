@@ -3,6 +3,12 @@
 #include "ofParameterGroup.h"
 #include <QVariant>
 
+enum MyRoles {
+	maxRange = Qt::UserRole
+	, minRange
+	, myRole3
+};
+
 class Data_B {
 
 // 	Data_B() {
@@ -34,6 +40,11 @@ public:
 		default:
 			return QString("");
 		}
+	}
+
+	QVariant getMax(int row) const {
+		auto max = paramGroup[row].cast<float>().getMax();
+		return QVariant(max);
 	}
 
 	void setData(int row, int col, const QVariant & value) {

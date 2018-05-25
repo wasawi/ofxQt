@@ -20,13 +20,15 @@ QWidget *SpinBoxDelegate::createEditor(QWidget *parent,
 	// find a way to get properties from QModelIndex
 	// so that we can set dynamic ranges...		
 	slider->setMinimum(0);
-	slider->setMaximum(100);
+//	slider->setMaximum(100);
+	int maxRange = index.model()->data(index, MyRoles::maxRange).toInt();
+	slider->setMaximum(maxRange);
 
 	QSpinBox *spinbox = new QSpinBox(editor);
 	spinbox->setMinimumWidth(20);
 	spinbox->setFrame(false);
 	spinbox->setMinimum(0);
-	spinbox->setMaximum(100);
+	spinbox->setMaximum(maxRange);
 	
 // 	Autoselect_filter *autoselect_filter = new Autoselect_filter(parent);
 // 	spinbox->installEventFilter(autoselect_filter);
@@ -49,12 +51,14 @@ void SpinBoxDelegate::setEditorData(QWidget *editor,
                                     const QModelIndex &index) const
 {
     int value = index.model()->data(index, Qt::EditRole).toInt();
-
+	int maxRange = index.model()->data(index, MyRoles::maxRange).toInt();
 	for (auto widget : editor->findChildren<QSlider*>()) {
 		widget->setValue(value);
+		widget->setMaximum(maxRange);
 	}
 	for (auto widget : editor->findChildren<QSpinBox*>()) {
 		widget->setValue(value);
+		widget->setMaximum(maxRange);
 	}
 }
 
